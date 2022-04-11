@@ -70,18 +70,16 @@ namespace SkillIssue
         }
 
         private void GameForm_Load(object sender, EventArgs e) {
-            // Prepare some optimization flags
+            // Prepare graphics optimization flags
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             // Initialize the game
             _SkillIssue = new Game(
+                _form: this,
                 _resolution: new Size(640, 480)
             );
-
-            // Adjust window size to the game resolution
-            ClientSize = _SkillIssue.Resolution;
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -100,8 +98,22 @@ namespace SkillIssue
             if (e.KeyCode == Keys.S) { _SkillIssue.Input &= ~(1 << 3); }
         }
 
+        private PaintEventArgs pea;
+
         private void GameForm_Paint(object sender, PaintEventArgs e) {
-            
+            pea = e;
+            _SkillIssue.Render(e.Graphics);
+        }
+
+        private void tmGameLoop_Tick(object sender, EventArgs e)
+        {
+            _SkillIssue.Render();
+        }
+
+        private void tmResetFPSstep_Tick(object sender, EventArgs e)
+        {
+            _SkillIssue.FPS = _SkillIssue.FPSstep;
+            _SkillIssue.FPSstep = 0;
         }
     }
 }

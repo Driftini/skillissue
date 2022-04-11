@@ -29,7 +29,22 @@ namespace SkillIssue
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.tmGameLoop = new System.Windows.Forms.Timer(this.components);
+            this.tmResetFPSstep = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
+            // 
+            // tmGameLoop
+            // 
+            this.tmGameLoop.Enabled = true;
+            this.tmGameLoop.Interval = 20;
+            this.tmGameLoop.Tick += new System.EventHandler(this.tmGameLoop_Tick);
+            // 
+            // tmResetFPSstep
+            // 
+            this.tmResetFPSstep.Enabled = true;
+            this.tmResetFPSstep.Interval = 1000;
+            this.tmResetFPSstep.Tick += new System.EventHandler(this.tmResetFPSstep_Tick);
             // 
             // GameForm
             // 
@@ -42,6 +57,7 @@ namespace SkillIssue
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Skill Issue";
             this.Load += new System.EventHandler(this.GameForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
             this.ResumeLayout(false);
@@ -49,6 +65,9 @@ namespace SkillIssue
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer tmGameLoop;
+        private System.Windows.Forms.Timer tmResetFPSstep;
     }
 }
 
