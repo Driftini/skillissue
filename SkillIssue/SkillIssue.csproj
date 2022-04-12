@@ -50,7 +50,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game.cs" />
+    <Compile Include="Classes\Actor.cs" />
+    <Compile Include="Classes\Game.cs" />
+    <Compile Include="Classes\Player.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +104,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\colliderOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trollsprite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

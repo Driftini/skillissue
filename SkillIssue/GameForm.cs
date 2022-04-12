@@ -80,6 +80,13 @@ namespace SkillIssue
                 _form: this,
                 _resolution: new Size(640, 480)
             );
+
+            _SkillIssue.ActorList.Add(
+                new Player(
+                    _position: new Point(320, 240),
+                    _sprite: Properties.Resources.trollsprite
+                )
+            );
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -98,16 +105,13 @@ namespace SkillIssue
             if (e.KeyCode == Keys.S) { _SkillIssue.Input &= ~(1 << 3); }
         }
 
-        private PaintEventArgs pea;
-
         private void GameForm_Paint(object sender, PaintEventArgs e) {
-            pea = e;
             _SkillIssue.Render(e.Graphics);
         }
 
         private void tmGameLoop_Tick(object sender, EventArgs e)
         {
-            _SkillIssue.Render();
+            Invalidate();
         }
 
         private void tmResetFPSstep_Tick(object sender, EventArgs e)
