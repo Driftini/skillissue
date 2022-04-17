@@ -37,7 +37,7 @@ namespace SkillIssue
             // tmGameLoop
             // 
             this.tmGameLoop.Enabled = true;
-            this.tmGameLoop.Interval = 20;
+            this.tmGameLoop.Interval = 16;
             this.tmGameLoop.Tick += new System.EventHandler(this.tmGameLoop_Tick);
             // 
             // tmResetFPSstep
@@ -54,7 +54,7 @@ namespace SkillIssue
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "GameForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Skill Issue";
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);

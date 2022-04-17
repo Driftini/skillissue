@@ -50,9 +50,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Actor.cs" />
+    <Compile Include="Classes\Actors\Actor.cs" />
     <Compile Include="Classes\Game.cs" />
-    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\InputManager.cs" />
+    <Compile Include="Classes\Actors\Player.cs" />
+    <Compile Include="Classes\Actors\ZIndexTester.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,25 +90,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ltgsprite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\player.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\20-iceberg.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\grid.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\colliderOff.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\colliderOn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\trollsprite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
