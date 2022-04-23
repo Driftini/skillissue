@@ -23,17 +23,21 @@ namespace SkillIssue
             // Initialize the game
             _SkillIssue = new Game(
                 _form: this,
-                _resolution: new Size(640, 480)
+                _resolution: new Size(640, 360),
+                _scale: 1
             );
 
             _SkillIssue.ActorList.Add(
                 new Player(
-                    _position: new Point(320, 240),
+                    _position: new Point(300, 240),
                     _sprite: Properties.Resources.player
                 )
             );
 
+            
+
             // z-index testing
+
             _SkillIssue.ActorList.Add(
                 new ZIndexTester(
                     _position: new Point(200, 0),
@@ -47,7 +51,7 @@ namespace SkillIssue
 
             var rnd = new Random();
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 0; i++)
             {
                 _SkillIssue.ActorList.Add(
                     new ZIndexTester(

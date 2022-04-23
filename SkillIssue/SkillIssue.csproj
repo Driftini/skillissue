@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Actors\Actor.cs" />
+    <Compile Include="Classes\Actors\Collider.cs" />
     <Compile Include="Classes\Game.cs" />
     <Compile Include="Classes\InputManager.cs" />
     <Compile Include="Classes\Actors\Player.cs" />
@@ -97,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\colliderOn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\floortile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

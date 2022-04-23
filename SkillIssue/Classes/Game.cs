@@ -8,23 +8,29 @@ namespace SkillIssue
 {
     class Game
     {
-        public Game(Form _form, Size _resolution) {
+        public Game(Form _form, Size _resolution, int _scale) {
             GameForm = _form;
             Resolution = _resolution;
+            Scale = _scale;
 
             // Adjust window size and position to the game resolution
             Size _oldSize = GameForm.ClientSize;
-            GameForm.ClientSize = Resolution;
+            GameForm.ClientSize = new Size(
+                Resolution.Width * Scale - 1,
+                Resolution.Height * Scale - 1
+            );
 
             GameForm.Location = new Point(
-                (GameForm.Location.X - (int)(_oldSize.Width * 1.3)),
-                (GameForm.Location.Y - _oldSize.Height)
+                (GameForm.Location.X - (int)(_oldSize.Width * Scale * 1.3)),
+                (GameForm.Location.Y - _oldSize.Height * Scale)
             );
         }
 
         public Form GameForm { get; set; }
 
         public Size Resolution { get; set; }
+
+        private int Scale { get; set; }
 
         public int FPS { get; set; }
         public int FPSstep { get; set; }
@@ -53,33 +59,46 @@ namespace SkillIssue
 
         public void Render(Graphics _gfx)
         {
-            #region Graphic buffer configuration
+            Bitmap GBuffer = new Bitmap(Resolution.Width, Resolution.Height);
+            Graphics GBufferGFX = Graphics.FromImage(GBuffer);
+
+            #region Graphics configuration
+            GBufferGFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            GBufferGFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            GBufferGFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            GBufferGFX.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            GBufferGFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+
             _gfx.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
             _gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
             _gfx.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            _gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             _gfx.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
             #endregion
 
             Color BGColor = Color.DarkOliveGreen;
             Color FontColor = Color.LightGray;
 
-            _gfx.FillRectangle(new SolidBrush(BGColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
+            GBufferGFX.FillRectangle(new SolidBrush(BGColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
 
             foreach (Actor _actor in ActorList)
             {
-                _actor.Draw(_gfx);
+                _actor.Draw(GBufferGFX);
                 
-                /*_gfx.DrawRectangle(
+                /*GraphicBuffer.DrawRectangle(
                     new Pen(FontColor),
                     new Rectangle(_actor.Position.X, _actor.Position.Y, _actor.Size.Width, _actor.Size.Height)
                 );*/
             }
 
-            _gfx.DrawString("Skill Issue prealpha\n" +
-                $"FPS: {FPS}", new Font("Verdana", 7), new SolidBrush(FontColor), new Point(5, 8));
+            GBufferGFX.DrawString("Skill Issue prealpha\n" +
+                $"FPS: {FPS}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
 
-            //_gfx.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn test actors", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+            //GraphicBuffer.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn test actors", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+
+            _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));
+
+            GBuffer.Dispose();
+            GBufferGFX.Dispose();
 
             FPSstep++;
         }

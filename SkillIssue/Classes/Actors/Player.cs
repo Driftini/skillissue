@@ -12,8 +12,8 @@ namespace SkillIssue
             Sprite = _sprite;
             Position = _position;
 
-            Size = new Size(128, 128);
-            Speed = 2;
+            Size = new Size(Sprite.Width, Sprite.Height);
+            Speed = 1.4f;
             zIndex = eZINDEX.PLAYER;
         }
 
