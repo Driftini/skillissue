@@ -14,6 +14,8 @@ namespace SkillIssue
 
             Size = new Size(Sprite.Width, Sprite.Height);
             Speed = 1.4f;
+            Gravity = true;
+            Solid = true;
             zIndex = eZINDEX.PLAYER;
         }
 
@@ -38,13 +40,16 @@ namespace SkillIssue
 
             if (_input.InputCheck((byte)InputManager.eKEYS.UP))
             {
-                Velocity.Y -= Speed;
+                if (Grounded)
+                {
+                    Velocity.Y -= 7;
+                }
             }
 
-            if (_input.InputCheck((byte)InputManager.eKEYS.DOWN))
+            /*if (_input.InputCheck((byte)InputManager.eKEYS.DOWN))
             {
                 Velocity.Y += Speed;
-            }
+            }*/
 
             #endregion
         }

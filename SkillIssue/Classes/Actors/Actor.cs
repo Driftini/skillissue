@@ -10,6 +10,9 @@ namespace SkillIssue
         public Point Position { get; set; }
         public Size Size { get; set; }
         public float Speed { get; set; }
+        public bool Gravity { get; set; }
+        public bool Solid { get; set; }
+        public bool Grounded { get; set; }
 
         public Vector2 Velocity;
         public Vector2 Acceleration;
@@ -41,7 +44,49 @@ namespace SkillIssue
             var rectThis = new Rectangle(Position, Size);
             var rectCollider = new Rectangle(_collider.Position, _collider.Size);
 
-            if (rectThis.IntersectsWith(rectCollider)) CurrentCollisions.Add(_collider);
+            if (rectThis.IntersectsWith(rectCollider))
+            {
+                CurrentCollisions.Add(_collider);
+
+                #region Solid collision response
+
+                if (_collider is Collider)
+                {
+                    int newPosX = Position.X;
+                    int newPosY = Position.Y;
+
+                    rectThis.Intersect(rectCollider);
+
+                    if (rectThis.Right < rectCollider.Left + 10)
+                    {
+                        newPosX -= rectThis.Size.Width;
+                        Acceleration.X = 0;
+                    }
+
+                    if (rectThis.Left > rectCollider.Right - 10)
+                    {
+                        newPosX += rectThis.Size.Width;
+                        Acceleration.X = 0;
+                    }
+
+                    if (rectThis.Bottom < rectCollider.Top + 30)
+                    {
+                        newPosY -= rectThis.Size.Height + 0;
+                        Acceleration.Y = 0;
+                        Grounded = true;
+                    }
+
+                    if (rectThis.Top > rectCollider.Bottom - 30)
+                    {
+                        newPosY += rectThis.Size.Height;
+                        Acceleration.Y = 0;
+                    }
+
+                    Position = new Point(newPosX, newPosY);
+                }
+
+                #endregion
+            }
         }
 
         public void MovementUpdate()
@@ -52,8 +97,14 @@ namespace SkillIssue
             if (Math.Abs(Acceleration.X) > 1) Acceleration.X /= 1.3f;
             else Acceleration.X = 0;
 
-            if (Math.Abs(Acceleration.Y) > 1) Acceleration.Y /= 1.3f;
-            else Acceleration.Y = 0;
+            //if (Math.Abs(Acceleration.Y) > 1) Acceleration.Y /= 1.3f;
+            //else Acceleration.Y = 0;
+            #endregion
+
+            #region Gravity
+
+            if (Gravity) Acceleration.Y += 1.2f;
+
             #endregion
 
             Acceleration.X += Velocity.X * Speed;

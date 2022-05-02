@@ -29,39 +29,76 @@ namespace SkillIssue
 
             _SkillIssue.ActorList.Add(
                 new Player(
-                    _position: new Point(300, 240),
+                    _position: new Point(300, 200),
                     _sprite: Properties.Resources.player
+                )
+            );
+
+            // colliders
+
+            _SkillIssue.ActorList.Add(
+                new Collider(
+                    _position: new Point(0, 328),
+                    _size: new Size(650, 32)
+                )
+            );
+
+            _SkillIssue.ActorList.Add(
+                new Collider(
+                    _position: new Point(0, 0),
+                    _size: new Size(32, 328)
+                )
+            );
+
+            _SkillIssue.ActorList.Add(
+                new Collider(
+                    _position: new Point(608, 0),
+                    _size: new Size(32, 328)
+                )
+            );
+
+            _SkillIssue.ActorList.Add(
+                new Collider(
+                    _position: new Point(400, 200),
+                    _size: new Size(128, 32)
+                )
+            );
+
+            _SkillIssue.ActorList.Add(
+                new Collider(
+                    _position: new Point(200, 100),
+                    _size: new Size(128, 32)
                 )
             );
 
             // z-index testing
 
-            _SkillIssue.ActorList.Add(
-                new ZIndexTester(
-                    _position: new Point(200, 0),
-                    _sprite: Properties.Resources.colliderOff,
-                    _zindex: Actor.eZINDEX.BACKGROUND,
-                    _size: new Size(400, 400),
-                    _speed: 1.00000001f,
-                    _target: 100
-                )
-            );
+            //_SkillIssue.ActorList.Add(
+            //    new ZIndexTester(
+            //        _position: new Point(200, 0),
+            //        _sprite: Properties.Resources.colliderOff,
+            //        _zindex: Actor.eZINDEX.BACKGROUND,
+            //        _size: new Size(400, 400),
+            //        _speed: 1.00000001f,
+            //        _target: 100
+            //    )
+            //);
 
-            var rnd = new Random();
+            //var rnd = new Random();
 
-            for (int i = 0; i <= -1; i++)
-            {
-                _SkillIssue.ActorList.Add(
-                    new ZIndexTester(
-                        _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
-                        _sprite: Properties.Resources.colliderOn,
-                        _zindex: Actor.eZINDEX.SOLID,
-                        _size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
-                        _speed: (rnd.Next(100, 500) / 100),
-                        _target: rnd.Next(2, 100)
-                    )
-                );
-            }
+            //for (int i = 0; i <= -1; i++)
+            //{
+            //    _SkillIssue.ActorList.Add(
+            //        new ZIndexTester(
+            //            _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
+            //            _sprite: Properties.Resources.colliderOn,
+            //            _zindex: Actor.eZINDEX.SOLID,
+            //            _size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
+            //            _speed: (rnd.Next(100, 500) / 100),
+            //            _target: rnd.Next(2, 100)
+            //        )
+            //    );
+            //}
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
