@@ -53,6 +53,13 @@ namespace SkillIssue
                     _player.InputUpdate(Input);
                 }
 
+                _actor.CurrentCollisions.Clear();
+
+                foreach (Actor _collider in ActorList)
+                {
+                    _actor.CollisionUpdate(_collider);
+                }
+
                 _actor.Update();
             }
         }
@@ -83,17 +90,24 @@ namespace SkillIssue
             foreach (Actor _actor in ActorList)
             {
                 _actor.Draw(GBufferGFX);
-                
-                /*GraphicBuffer.DrawRectangle(
+                GBufferGFX.DrawString($"Colliding with {_actor.CurrentCollisions.Count} actors", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(_actor.Position.X, _actor.Position.Y));
+
+                GBufferGFX.DrawRectangle(
                     new Pen(FontColor),
-                    new Rectangle(_actor.Position.X, _actor.Position.Y, _actor.Size.Width, _actor.Size.Height)
-                );*/
+                    new Rectangle(_actor.Position, _actor.Size)
+                );
             }
+
+            var rect1 = new Rectangle(ActorList[0].Position, ActorList[0].Size);
+            var rect2 = new Rectangle(ActorList[1].Position, ActorList[1].Size);
+            rect1.Intersect(rect2);
+
+            GBufferGFX.FillRectangle(new SolidBrush(Color.Red), rect1);
 
             GBufferGFX.DrawString("Skill Issue prealpha\n" +
                 $"FPS: {FPS}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
 
-            //GraphicBuffer.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn test actors", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+            //GraphicBuffer.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn actor", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
 
             _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));
 

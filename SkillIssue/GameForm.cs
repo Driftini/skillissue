@@ -34,8 +34,6 @@ namespace SkillIssue
                 )
             );
 
-            
-
             // z-index testing
 
             _SkillIssue.ActorList.Add(
@@ -51,11 +49,11 @@ namespace SkillIssue
 
             var rnd = new Random();
 
-            for (int i = 0; i <= 0; i++)
+            for (int i = 0; i <= -1; i++)
             {
                 _SkillIssue.ActorList.Add(
                     new ZIndexTester(
-                        _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 500)),
+                        _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
                         _sprite: Properties.Resources.colliderOn,
                         _zindex: Actor.eZINDEX.SOLID,
                         _size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),

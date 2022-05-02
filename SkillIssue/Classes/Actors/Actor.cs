@@ -30,6 +30,20 @@ namespace SkillIssue
 
         public eZINDEX zIndex;
 
+        public List<Actor> CurrentCollisions = new List<Actor>();
+
+        public void CollisionUpdate(Actor _collider)
+        {
+            if (this == _collider) return; // Do not check for collisions if
+                                           // the actor currently being tested for collision
+                                           // is the same one calling the method
+
+            var rectThis = new Rectangle(Position, Size);
+            var rectCollider = new Rectangle(_collider.Position, _collider.Size);
+
+            if (rectThis.IntersectsWith(rectCollider)) CurrentCollisions.Add(_collider);
+        }
+
         public void MovementUpdate()
         {
             Vector2.Normalize(Velocity); // This prevents the player from moving faster diagonally
