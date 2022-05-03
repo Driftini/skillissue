@@ -15,7 +15,11 @@ namespace SkillIssue
             zIndex = _zindex;
             Speed = _speed;
             MoveTarget = _target;
-        }
+
+            FrictionX = 1.3f;
+            FrictionY = 1.3f;
+            IsSolid = false;
+    }
 
         private int Facing = 0; // 0 left, 1 down, 2 right, 3 up
         private int MoveCounter = 0;

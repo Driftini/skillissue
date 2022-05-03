@@ -5,14 +5,16 @@ using System.Numerics;
 
 namespace SkillIssue
 {
-    abstract class Actor
+    abstract partial class Actor
     {
         public Point Position { get; set; }
         public Size Size { get; set; }
         public float Speed { get; set; }
+        public float FrictionX = 1;
+        public float FrictionY = 1;
         public bool Gravity { get; set; }
-        public bool Solid { get; set; }
-        public bool Grounded { get; set; }
+        public bool IsSolid { get; set; }
+        public bool IsGrounded { get; set; }
 
         public Vector2 Velocity;
         public Vector2 Acceleration;
@@ -34,6 +36,7 @@ namespace SkillIssue
         public eZINDEX zIndex;
 
         public List<Actor> CurrentCollisions = new List<Actor>();
+        //public List
 
         public void CollisionUpdate(Actor _collider)
         {
@@ -50,7 +53,7 @@ namespace SkillIssue
 
                 #region Solid collision response
 
-                if (_collider is Collider)
+                if (_collider is Collider && IsSolid)
                 {
                     int newPosX = Position.X;
                     int newPosY = Position.Y;
@@ -73,7 +76,7 @@ namespace SkillIssue
                     {
                         newPosY -= rectThis.Size.Height + 0;
                         Acceleration.Y = 0;
-                        Grounded = true;
+                        IsGrounded = true;
                     }
 
                     if (rectThis.Top > rectCollider.Bottom - 30)
@@ -94,11 +97,11 @@ namespace SkillIssue
             Vector2.Normalize(Velocity); // This prevents the player from moving faster diagonally
 
             #region Friction
-            if (Math.Abs(Acceleration.X) > 1) Acceleration.X /= 1.3f;
+            if (Math.Abs(Acceleration.X) > 1) Acceleration.X /= FrictionX;
             else Acceleration.X = 0;
 
-            //if (Math.Abs(Acceleration.Y) > 1) Acceleration.Y /= 1.3f;
-            //else Acceleration.Y = 0;
+            if (Math.Abs(Acceleration.Y) > 1) Acceleration.Y /= FrictionY;
+            else Acceleration.Y = 0;
             #endregion
 
             #region Gravity

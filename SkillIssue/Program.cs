@@ -16,7 +16,7 @@ namespace SkillIssue
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameForm());
+            Application.Run(new frmGame());
         }
 
         public static sbyte Input = 0;

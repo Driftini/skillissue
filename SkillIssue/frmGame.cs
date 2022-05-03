@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace SkillIssue
 {
-    public partial class GameForm : Form
+    public partial class frmGame : Form
     {
         private Game _SkillIssue;
 
-        public GameForm()
+        public frmGame()
         {
             InitializeComponent();
         }
@@ -73,32 +73,32 @@ namespace SkillIssue
 
             // z-index testing
 
-            //_SkillIssue.ActorList.Add(
-            //    new ZIndexTester(
-            //        _position: new Point(200, 0),
-            //        _sprite: Properties.Resources.colliderOff,
-            //        _zindex: Actor.eZINDEX.BACKGROUND,
-            //        _size: new Size(400, 400),
-            //        _speed: 1.00000001f,
-            //        _target: 100
-            //    )
-            //);
+            _SkillIssue.ActorList.Add(
+                new ZIndexTester(
+                    _position: new Point(200, 0),
+                    _sprite: Properties.Resources.colliderOff,
+                    _zindex: Actor.eZINDEX.BACKGROUND,
+                    _size: new Size(400, 400),
+                    _speed: 1.00000001f,
+                    _target: 100
+                )
+            );
 
-            //var rnd = new Random();
+            var rnd = new Random();
 
-            //for (int i = 0; i <= -1; i++)
-            //{
-            //    _SkillIssue.ActorList.Add(
-            //        new ZIndexTester(
-            //            _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
-            //            _sprite: Properties.Resources.colliderOn,
-            //            _zindex: Actor.eZINDEX.SOLID,
-            //            _size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
-            //            _speed: (rnd.Next(100, 500) / 100),
-            //            _target: rnd.Next(2, 100)
-            //        )
-            //    );
-            //}
+            for (int i = 0; i <= 10; i++)
+            {
+                _SkillIssue.ActorList.Add(
+                    new ZIndexTester(
+                        _position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
+                        _sprite: Properties.Resources.colliderOn,
+                        _zindex: Actor.eZINDEX.PARTICLE,
+                        _size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
+                        _speed: (rnd.Next(100, 500) / 100),
+                        _target: rnd.Next(2, 50)
+                    )
+                );
+            }
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)
@@ -107,6 +107,9 @@ namespace SkillIssue
             if (e.KeyCode == Keys.D) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.RIGHT, true); }
             if (e.KeyCode == Keys.W) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.UP, true); }
             if (e.KeyCode == Keys.S) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOWN, true); }
+
+            if (e.KeyCode == Keys.F1) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DGENERAL, true); }
+            if (e.KeyCode == Keys.F2) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOVERLAYS, true); }
         }
 
         private void GameForm_KeyUp(object sender, KeyEventArgs e)
@@ -115,6 +118,9 @@ namespace SkillIssue
             if (e.KeyCode == Keys.D) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.RIGHT, false); }
             if (e.KeyCode == Keys.W) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.UP, false); }
             if (e.KeyCode == Keys.S) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOWN, false); }
+
+            if (e.KeyCode == Keys.F1) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DGENERAL, false); }
+            if (e.KeyCode == Keys.F2) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOVERLAYS, false); }
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e) {

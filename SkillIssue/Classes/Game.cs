@@ -32,17 +32,32 @@ namespace SkillIssue
 
         private int Scale { get; set; }
 
-        public int FPS { get; set; }
-        public int FPSstep { get; set; }
-
         public InputManager Input = new InputManager();
 
         public List<Actor> ActorList = new List<Actor>();
+
+        #region Debugging
+        public int FPS { get; set; }
+        public int FPSstep { get; set; }
+
+        private bool Debug_General = true;
+        private bool Debug_Overlays = false;
+        
+
+        public frmActorDebug Debug_ActorForm = new frmActorDebug();
+
+        DialogResult a ;
+        #endregion
 
         #region Gameloop
 
         public void Update()
         {
+            if (Input.InputCheck((byte)InputManager.eKEYS.DGENERAL))
+                Debug_General = !Debug_General;
+            if (Input.InputCheck((byte)InputManager.eKEYS.DOVERLAYS))
+                Debug_Overlays = !Debug_Overlays;
+
             ActorList = ActorList.OrderBy(_actor => _actor.zIndex).ToList();
 
             foreach (Actor _actor in ActorList)
@@ -55,7 +70,7 @@ namespace SkillIssue
                 }
 
                 _actor.CurrentCollisions.Clear();
-                _actor.Grounded = false;
+                _actor.IsGrounded = false;
 
                 foreach (Actor _intersecting in ActorList)
                 {
@@ -92,16 +107,24 @@ namespace SkillIssue
             foreach (Actor _actor in ActorList)
             {
                 _actor.Draw(GBufferGFX);
-                //GBufferGFX.DrawString($"Colliding with {_actor.CurrentCollisions.Count} actors", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(_actor.Position.X, _actor.Position.Y));
+                
+                if (Debug_Overlays)
+                {
+                    GBufferGFX.DrawString($"{_actor.CurrentCollisions.Count} collisions\n" +
+                        $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(_actor.Position.X, _actor.Position.Y));
 
-                //GBufferGFX.DrawRectangle(new Pen(FontColor), new Rectangle(_actor.Position, _actor.Size));
+                    GBufferGFX.DrawRectangle(new Pen(FontColor), new Rectangle(_actor.Position, _actor.Size));
+                }
             }
 
-            GBufferGFX.DrawString("Skill Issue prealpha\n" +
+            if (Debug_General)
+            {
+                GBufferGFX.DrawString("Skill Issue prealpha\n" +
                 $"FPS: {FPS}\n" +
                 $"Actors loaded: {ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
 
-            //GraphicBuffer.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn actor", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn actor", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+            }
 
             _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));
 

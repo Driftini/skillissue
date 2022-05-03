@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace SkillIssue
 {
-    class Player : Actor
+    class Player : LiveEntity
     {
         public Player(Point _position, Bitmap _sprite)
         {
@@ -14,10 +14,11 @@ namespace SkillIssue
 
             Size = new Size(Sprite.Width, Sprite.Height);
             Speed = 1.4f;
+            FrictionX = 1.3f;
             Gravity = true;
-            Solid = true;
+            IsSolid = true;
             zIndex = eZINDEX.PLAYER;
-        }
+    }
 
         public override void Update()
         {
@@ -40,7 +41,7 @@ namespace SkillIssue
 
             if (_input.InputCheck((byte)InputManager.eKEYS.UP))
             {
-                if (Grounded)
+                if (IsGrounded)
                 {
                     Velocity.Y -= 7;
                 }

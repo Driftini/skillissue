@@ -1,7 +1,7 @@
 ﻿
 namespace SkillIssue
 {
-    partial class GameForm
+    partial class frmGame
     {
         /// <summary>
         /// Required designer variable.

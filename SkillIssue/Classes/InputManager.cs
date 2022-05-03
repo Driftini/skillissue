@@ -13,19 +13,19 @@
             ATTACK = 5,
             DASH = 6,
 
-            DMAIN = 11,
+            DGENERAL = 11,
             DOVERLAYS = 12,
             DSPAWN = 19
         }
 
-        private byte Input = 0;
+        private short Input = 0;
 
         public void InputSet(byte _key, bool _pressed)
         {
             if (_pressed)
-                Input |= (byte)(1 << _key);
+                Input |= (short)(1 << _key);
             else
-                Input &= (byte)~(1 << _key);
+                Input &= (short)~(1 << _key);
         }
 
         public bool InputCheck(byte _key)
