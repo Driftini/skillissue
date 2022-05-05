@@ -37,16 +37,42 @@ namespace SkillIssue
         public List<Actor> ActorList = new List<Actor>();
 
         #region Debugging
+
         public int FPS { get; set; }
         public int FPSstep { get; set; }
 
         private bool Debug_General = true;
         private bool Debug_Overlays = false;
-        
+        private bool Debug_ActorForm = false;
 
-        public frmActorDebug Debug_ActorForm = new frmActorDebug();
+        private void Debug_ToggleActorForm()
+        {
+            Input.InputSet((byte)InputManager.eKEYS.DACTORS, false);
 
-        DialogResult a ;
+            if (!Debug_ActorForm) 
+            {
+                Debug_ActorForm = true;
+                var _form = new frmActorDebug();
+                
+                void UnsetBool(object sender, FormClosingEventArgs e) { Debug_ActorForm = false; }
+                _form.FormClosing += UnsetBool;
+
+                _form.Show();
+
+                var _actorType = _form.ReturnActorType();
+
+                switch (_actorType)
+                {
+                    case "Player":
+                        break;
+                    case "Collider":
+                        break;
+                    case "ZIndexTester":
+                        break;
+                }
+            }
+        }
+
         #endregion
 
         #region Gameloop
@@ -57,6 +83,8 @@ namespace SkillIssue
                 Debug_General = !Debug_General;
             if (Input.InputCheck((byte)InputManager.eKEYS.DOVERLAYS))
                 Debug_Overlays = !Debug_Overlays;
+            if (Input.InputCheck((byte)InputManager.eKEYS.DACTORS))
+                Debug_ToggleActorForm();
 
             ActorList = ActorList.OrderBy(_actor => _actor.zIndex).ToList();
 
@@ -123,7 +151,7 @@ namespace SkillIssue
                 $"FPS: {FPS}\n" +
                 $"Actors loaded: {ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
 
-                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F9 Spawn actor", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor manager", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
             }
 
             _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));

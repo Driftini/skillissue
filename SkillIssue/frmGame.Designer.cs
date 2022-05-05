@@ -46,20 +46,22 @@ namespace SkillIssue
             this.tmResetFPSstep.Interval = 1000;
             this.tmResetFPSstep.Tick += new System.EventHandler(this.tmResetFPSstep_Tick);
             // 
-            // GameForm
+            // frmGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(184, 161);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "GameForm";
+            this.Name = "frmGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Skill Issue";
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
+            this.MouseEnter += new System.EventHandler(this.frmGame_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.frmGame_MouseLeave);
             this.ResumeLayout(false);
 
         }

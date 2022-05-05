@@ -7,11 +7,11 @@ namespace SkillIssue
 {
     class Player : LiveEntity
     {
-        public Player(Point _position, Bitmap _sprite)
+        public Player(Point _position)
         {
-            Sprite = _sprite;
             Position = _position;
 
+            Sprite = Properties.Resources.player;
             Size = new Size(Sprite.Width, Sprite.Height);
             Speed = 1.4f;
             FrictionX = 1.3f;

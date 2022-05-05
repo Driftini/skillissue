@@ -18,7 +18,6 @@ namespace SkillIssue
             SetStyle(ControlStyles.UserPaint, true);
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
-            Cursor.Hide();
 
             // Initialize the game
             _SkillIssue = new Game(
@@ -29,8 +28,7 @@ namespace SkillIssue
 
             _SkillIssue.ActorList.Add(
                 new Player(
-                    _position: new Point(300, 200),
-                    _sprite: Properties.Resources.player
+                    _position: new Point(300, 200)
                 )
             );
 
@@ -86,7 +84,7 @@ namespace SkillIssue
 
             var rnd = new Random();
 
-            for (int i = 0; i <= 10; i++)
+            for (int i = 0; i <= 0; i++)
             {
                 _SkillIssue.ActorList.Add(
                     new ZIndexTester(
@@ -110,6 +108,7 @@ namespace SkillIssue
 
             if (e.KeyCode == Keys.F1) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DGENERAL, true); }
             if (e.KeyCode == Keys.F2) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOVERLAYS, true); }
+            if (e.KeyCode == Keys.F3) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DACTORS, true); }
         }
 
         private void GameForm_KeyUp(object sender, KeyEventArgs e)
@@ -121,6 +120,8 @@ namespace SkillIssue
 
             if (e.KeyCode == Keys.F1) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DGENERAL, false); }
             if (e.KeyCode == Keys.F2) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOVERLAYS, false); }
+            if (e.KeyCode == Keys.F3) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DACTORS, false); }
+
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e) {
@@ -137,6 +138,16 @@ namespace SkillIssue
         {
             _SkillIssue.FPS = _SkillIssue.FPSstep;
             _SkillIssue.FPSstep = 0;
+        }
+
+        private void frmGame_MouseEnter(object sender, EventArgs e)
+        {
+            Cursor.Hide();
+        }
+
+        private void frmGame_MouseLeave(object sender, EventArgs e)
+        {
+            Cursor.Show();
         }
     }
 }
