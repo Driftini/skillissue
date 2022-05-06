@@ -84,7 +84,7 @@ namespace SkillIssue
 
             var rnd = new Random();
 
-            for (int i = 0; i <= 0; i++)
+            for (int i = 0; i <= 2; i++)
             {
                 _SkillIssue.ActorList.Add(
                     new ZIndexTester(

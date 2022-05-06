@@ -30,6 +30,14 @@
         {
             this.btAddActor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.nudActorSize_Y = new System.Windows.Forms.NumericUpDown();
+            this.nudActorSize_X = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.nudActorPosition_Y = new System.Windows.Forms.NumericUpDown();
+            this.nudActorPosition_X = new System.Windows.Forms.NumericUpDown();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.nudZITesterMoveTarget = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,29 +51,20 @@
             this.cbActorType = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.nudSpawnCount = new System.Windows.Forms.NumericUpDown();
-            this.nudActorPosition_X = new System.Windows.Forms.NumericUpDown();
-            this.nudActorPosition_Y = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.nudActorSize_Y = new System.Windows.Forms.NumericUpDown();
-            this.nudActorSize_X = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_X)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).BeginInit();
             this.SuspendLayout();
             // 
             // btAddActor
             // 
             this.btAddActor.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btAddActor.Enabled = false;
             this.btAddActor.Location = new System.Drawing.Point(251, 415);
             this.btAddActor.Name = "btAddActor";
             this.btAddActor.Size = new System.Drawing.Size(75, 20);
@@ -100,6 +99,150 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Actors";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(248, 73);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(14, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Y";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(182, 73);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(14, 13);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "X";
+            // 
+            // nudActorSize_Y
+            // 
+            this.nudActorSize_Y.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudActorSize_Y.Location = new System.Drawing.Point(264, 71);
+            this.nudActorSize_Y.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudActorSize_Y.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudActorSize_Y.Name = "nudActorSize_Y";
+            this.nudActorSize_Y.Size = new System.Drawing.Size(42, 20);
+            this.nudActorSize_Y.TabIndex = 20;
+            this.nudActorSize_Y.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            // 
+            // nudActorSize_X
+            // 
+            this.nudActorSize_X.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudActorSize_X.Location = new System.Drawing.Point(197, 71);
+            this.nudActorSize_X.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nudActorSize_X.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudActorSize_X.Name = "nudActorSize_X";
+            this.nudActorSize_X.Size = new System.Drawing.Size(42, 20);
+            this.nudActorSize_X.TabIndex = 19;
+            this.nudActorSize_X.Value = new decimal(new int[] {
+            32,
+            0,
+            0,
+            0});
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(248, 47);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(14, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Y";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(182, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(14, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "X";
+            // 
+            // nudActorPosition_Y
+            // 
+            this.nudActorPosition_Y.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudActorPosition_Y.Location = new System.Drawing.Point(264, 45);
+            this.nudActorPosition_Y.Maximum = new decimal(new int[] {
+            700,
+            0,
+            0,
+            0});
+            this.nudActorPosition_Y.Minimum = new decimal(new int[] {
+            700,
+            0,
+            0,
+            -2147483648});
+            this.nudActorPosition_Y.Name = "nudActorPosition_Y";
+            this.nudActorPosition_Y.Size = new System.Drawing.Size(42, 20);
+            this.nudActorPosition_Y.TabIndex = 16;
+            this.nudActorPosition_Y.Value = new decimal(new int[] {
+            240,
+            0,
+            0,
+            0});
+            // 
+            // nudActorPosition_X
+            // 
+            this.nudActorPosition_X.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.nudActorPosition_X.Location = new System.Drawing.Point(197, 45);
+            this.nudActorPosition_X.Maximum = new decimal(new int[] {
+            700,
+            0,
+            0,
+            0});
+            this.nudActorPosition_X.Minimum = new decimal(new int[] {
+            700,
+            0,
+            0,
+            -2147483648});
+            this.nudActorPosition_X.Name = "nudActorPosition_X";
+            this.nudActorPosition_X.Size = new System.Drawing.Size(42, 20);
+            this.nudActorPosition_X.TabIndex = 5;
+            this.nudActorPosition_X.Value = new decimal(new int[] {
+            320,
+            0,
+            0,
+            0});
             // 
             // pictureBox1
             // 
@@ -248,150 +391,6 @@
             0,
             0});
             // 
-            // nudActorPosition_X
-            // 
-            this.nudActorPosition_X.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudActorPosition_X.Location = new System.Drawing.Point(197, 45);
-            this.nudActorPosition_X.Maximum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            0});
-            this.nudActorPosition_X.Minimum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            -2147483648});
-            this.nudActorPosition_X.Name = "nudActorPosition_X";
-            this.nudActorPosition_X.Size = new System.Drawing.Size(42, 20);
-            this.nudActorPosition_X.TabIndex = 5;
-            this.nudActorPosition_X.Value = new decimal(new int[] {
-            320,
-            0,
-            0,
-            0});
-            // 
-            // nudActorPosition_Y
-            // 
-            this.nudActorPosition_Y.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudActorPosition_Y.Location = new System.Drawing.Point(264, 45);
-            this.nudActorPosition_Y.Maximum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            0});
-            this.nudActorPosition_Y.Minimum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            -2147483648});
-            this.nudActorPosition_Y.Name = "nudActorPosition_Y";
-            this.nudActorPosition_Y.Size = new System.Drawing.Size(42, 20);
-            this.nudActorPosition_Y.TabIndex = 16;
-            this.nudActorPosition_Y.Value = new decimal(new int[] {
-            240,
-            0,
-            0,
-            0});
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(182, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(14, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "X";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(248, 47);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(14, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Y";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(248, 73);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(14, 13);
-            this.label10.TabIndex = 22;
-            this.label10.Text = "Y";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(182, 73);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(14, 13);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "X";
-            // 
-            // nudActorSize_Y
-            // 
-            this.nudActorSize_Y.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudActorSize_Y.Location = new System.Drawing.Point(264, 71);
-            this.nudActorSize_Y.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudActorSize_Y.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudActorSize_Y.Name = "nudActorSize_Y";
-            this.nudActorSize_Y.Size = new System.Drawing.Size(42, 20);
-            this.nudActorSize_Y.TabIndex = 20;
-            this.nudActorSize_Y.Value = new decimal(new int[] {
-            32,
-            0,
-            0,
-            0});
-            // 
-            // nudActorSize_X
-            // 
-            this.nudActorSize_X.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudActorSize_X.Location = new System.Drawing.Point(197, 71);
-            this.nudActorSize_X.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nudActorSize_X.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudActorSize_X.Name = "nudActorSize_X";
-            this.nudActorSize_X.Size = new System.Drawing.Size(42, 20);
-            this.nudActorSize_X.TabIndex = 19;
-            this.nudActorSize_X.Value = new decimal(new int[] {
-            32,
-            0,
-            0,
-            0});
-            // 
             // frmActorDebug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,14 +409,14 @@
             this.Load += new System.EventHandler(this.frmActorDebug_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_X)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -19,6 +19,11 @@ namespace SkillIssue
             "ZIndexTester"
         };
 
+        public Button ReturnConfirmButton()
+        {
+            return btAddActor;
+        }
+
         void PopulateComboboxes()
         {
             foreach (string i in ACTORS)
@@ -44,8 +49,46 @@ namespace SkillIssue
 
         public Point ReturnActorPosition()
         {
-            var p = new Point((int)nudActorPosition_X.Value, (int)nudActorPosition_Y.Value);
-            return p;
+            return new Point((int)nudActorPosition_X.Value, (int)nudActorPosition_Y.Value);
+        }
+
+        public Size ReturnActorSize()
+        {
+            return new Size((int)nudActorPosition_X.Value, (int)nudActorPosition_Y.Value);
+        }
+
+        public float ReturnActorSpeed()
+        {
+            return (float)nudActorSpeed.Value;
+        }
+
+        public Actor.eZINDEX ReturnActorZIndex()
+        {
+            switch (cbActorZIndex.SelectedValue.ToString())
+            {
+                case "BACKGROUND":
+                    return Actor.eZINDEX.BACKGROUND;
+                case "PLAYER":
+                    return Actor.eZINDEX.PLAYER;
+                case "PARTICLE":
+                    return Actor.eZINDEX.PARTICLE;
+                case "SOLID":
+                    return Actor.eZINDEX.SOLID;
+                case "HUD":
+                    return Actor.eZINDEX.HUD;
+                default:
+                    return Actor.eZINDEX.ENTITY;
+            }
+        }
+
+        public int ReturnZITesterMoveTarget()
+        {
+            return (int)nudZITesterMoveTarget.Value;
+        }
+
+        public int ReturnSpawnCount()
+        {
+            return (int)nudSpawnCount.Value;
         }
 
         public frmActorDebug()

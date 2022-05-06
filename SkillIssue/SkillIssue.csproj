@@ -50,6 +50,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Request.cs" />
     <Compile Include="frmActorDebug.cs">
       <SubType>Form</SubType>
     </Compile>

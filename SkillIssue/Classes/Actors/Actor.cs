@@ -5,8 +5,10 @@ using System.Numerics;
 
 namespace SkillIssue
 {
-    abstract partial class Actor
+    public abstract partial class Actor
     {
+        public int ID { get; set; }
+
         public Point Position { get; set; }
         public Size Size { get; set; }
         public float Speed { get; set; }
@@ -24,7 +26,7 @@ namespace SkillIssue
         public enum eZINDEX
         {
             BACKGROUND = 0,
-            
+
             ENTITY = 1, // Living, non-playable actors
             PLAYER = 2,
             PARTICLE = 3,

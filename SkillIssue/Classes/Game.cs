@@ -34,7 +34,21 @@ namespace SkillIssue
 
         public InputManager Input = new InputManager();
 
+        #region Actor management
+
         public List<Actor> ActorList = new List<Actor>();
+
+        public void SpawnActor(Actor _toSpawn)
+        {
+
+        }
+
+        public void RemoveActor(int _actorid)
+        {
+
+        }
+
+        #endregion
 
         #region Debugging
 
@@ -54,22 +68,43 @@ namespace SkillIssue
                 Debug_ActorForm = true;
                 var _form = new frmActorDebug();
                 
-                void UnsetBool(object sender, FormClosingEventArgs e) { Debug_ActorForm = false; }
+                void UnsetBool(object sender, FormClosingEventArgs e) {
+                    Debug_ActorForm = false;
+                }
                 _form.FormClosing += UnsetBool;
 
-                _form.Show();
-
-                var _actorType = _form.ReturnActorType();
-
-                switch (_actorType)
+                void FormSpawn(object sender, EventArgs e)
                 {
-                    case "Player":
-                        break;
-                    case "Collider":
-                        break;
-                    case "ZIndexTester":
-                        break;
+                    var _actorType = _form.ReturnActorType();
+
+                    switch (_actorType)
+                    {
+                        case "Player":
+                            ActorList.Add(new Player(
+                                _position: _form.ReturnActorPosition()
+                            ));
+                            break;
+                        case "Collider":
+                            ActorList.Add(new Collider(
+                                _position: _form.ReturnActorPosition(),
+                                _size: _form.ReturnActorSize()
+                            ));
+                            break;
+                        case "ZIndexTester":
+                            ActorList.Add(new ZIndexTester(
+                                _position: _form.ReturnActorPosition(),
+                                _size: _form.ReturnActorSize(),
+                                _sprite: Properties.Resources.colliderOn,
+                                _zindex: _form.ReturnActorZIndex(),
+                                _speed: _form.ReturnActorSpeed(),
+                                _target: _form.ReturnZITesterMoveTarget()
+                            ));
+                            break;
+                    }
                 }
+                _form.ReturnConfirmButton().Click += FormSpawn;
+
+                _form.Show();
             }
         }
 
