@@ -19,11 +19,6 @@ namespace SkillIssue
             "ZIndexTester"
         };
 
-        public Button ReturnConfirmButton()
-        {
-            return btAddActor;
-        }
-
         void PopulateComboboxes()
         {
             foreach (string i in ACTORS)
@@ -42,6 +37,56 @@ namespace SkillIssue
             cbActorZIndex.SelectedIndex = 0;
         }
 
+        private void ValidateInput(object sender, EventArgs e)
+        {
+            if (cbActorType.SelectedIndex > -1 && cbActorZIndex.SelectedIndex > -1)
+            {
+                foreach (Control c in groupBox1.Controls)
+                {
+                    if (c is NumericUpDown && c.Name != "nudSpawnCount" || c is ComboBox && c.Name != "cbActorType")
+                        c.Enabled = false;
+                }
+
+                switch (cbActorType.SelectedItem.ToString())
+                {
+                    case "Player":
+                        nudActorPosition_X.Enabled = true;
+                        nudActorPosition_Y.Enabled = true;
+                        break;
+                    case "Collider":
+                        nudActorPosition_X.Enabled = true;
+                        nudActorPosition_Y.Enabled = true;
+                        nudActorSize_X.Enabled = true;
+                        nudActorSize_Y.Enabled = true;
+                        break;
+                    case "ZIndexTester":
+                        nudActorPosition_X.Enabled = true;
+                        nudActorPosition_Y.Enabled = true;
+                        nudActorSize_X.Enabled = true;
+                        nudActorSize_Y.Enabled = true;
+                        cbActorZIndex.Enabled = true;
+                        nudActorSpeed.Enabled = true;
+                        nudZITesterMoveTarget.Enabled = true;
+                        break;
+                }
+
+                btAddActor.Enabled = true;
+            }
+            else
+                btAddActor.Enabled = false;
+        }
+
+        #region Return methods
+
+        public Button ReturnSpawnButton()
+        {
+            return btAddActor;
+        }
+        public Button ReturnRemoveButton()
+        {
+            return btRemoveActor;
+        }
+
         public string ReturnActorType()
         {
             return cbActorType.SelectedItem.ToString();
@@ -54,7 +99,7 @@ namespace SkillIssue
 
         public Size ReturnActorSize()
         {
-            return new Size((int)nudActorPosition_X.Value, (int)nudActorPosition_Y.Value);
+            return new Size((int)nudActorSize_X.Value, (int)nudActorSize_Y.Value);
         }
 
         public float ReturnActorSpeed()
@@ -64,7 +109,7 @@ namespace SkillIssue
 
         public Actor.eZINDEX ReturnActorZIndex()
         {
-            switch (cbActorZIndex.SelectedValue.ToString())
+            switch (cbActorZIndex.SelectedItem.ToString())
             {
                 case "BACKGROUND":
                     return Actor.eZINDEX.BACKGROUND;
@@ -91,6 +136,13 @@ namespace SkillIssue
             return (int)nudSpawnCount.Value;
         }
 
+        public int ReturnRemoveID()
+        {
+            return (int)nudRemoveID.Value;
+        }
+
+        #endregion
+
         public frmActorDebug()
         {
             InitializeComponent();
@@ -100,37 +152,6 @@ namespace SkillIssue
         {
             PopulateComboboxes();
             Validate();
-        }
-
-        private void Validate(object sender, EventArgs e)
-        {
-            foreach (Control c in groupBox1.Controls) {
-                if (c is NumericUpDown || c is ComboBox && !(c.Name == "cbActorType"))
-                    c.Enabled = false;
-            }
-
-            switch (cbActorType.SelectedItem.ToString())
-            {
-                case "Player":
-                    nudActorPosition_X.Enabled = true;
-                    nudActorPosition_Y.Enabled = true;
-                    break;
-                case "Collider":
-                    nudActorPosition_X.Enabled = true;
-                    nudActorPosition_Y.Enabled = true;
-                    nudActorSize_X.Enabled = true;
-                    nudActorSize_Y.Enabled = true;
-                    break;
-                case "ZIndexTester":
-                    nudActorPosition_X.Enabled = true;
-                    nudActorPosition_Y.Enabled = true;
-                    nudActorSize_X.Enabled = true;
-                    nudActorSize_Y.Enabled = true;
-                    cbActorZIndex.Enabled = true;
-                    nudActorSpeed.Enabled = true;
-                    nudZITesterMoveTarget.Enabled = true;
-                    break;
-            }
         }
     }
 }

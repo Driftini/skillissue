@@ -11,7 +11,7 @@ namespace SkillIssue
         {
             Sprite = _sprite;
             Position = _position;
-            Size = _size;
+            RenderSize = _size;
             zIndex = _zindex;
             Speed = _speed;
             MoveTarget = _target;

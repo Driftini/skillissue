@@ -31,6 +31,8 @@
             this.btAddActor = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.nudSpawnCount = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.nudActorSize_Y = new System.Windows.Forms.NumericUpDown();
             this.nudActorSize_X = new System.Windows.Forms.NumericUpDown();
@@ -49,9 +51,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cbActorType = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.nudSpawnCount = new System.Windows.Forms.NumericUpDown();
+            this.nudRemoveID = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btRemoveActor = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).BeginInit();
@@ -59,24 +63,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemoveID)).BeginInit();
             this.SuspendLayout();
             // 
             // btAddActor
             // 
             this.btAddActor.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btAddActor.Location = new System.Drawing.Point(251, 415);
+            this.btAddActor.Location = new System.Drawing.Point(221, 370);
             this.btAddActor.Name = "btAddActor";
-            this.btAddActor.Size = new System.Drawing.Size(75, 20);
+            this.btAddActor.Size = new System.Drawing.Size(87, 20);
             this.btAddActor.TabIndex = 1;
-            this.btAddActor.Text = "Add Actor";
+            this.btAddActor.Text = "Add actor";
             this.btAddActor.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.nudSpawnCount);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.nudActorSize_Y);
+            this.groupBox1.Controls.Add(this.btAddActor);
             this.groupBox1.Controls.Add(this.nudActorSize_X);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
@@ -95,7 +102,7 @@
             this.groupBox1.Controls.Add(this.cbActorType);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(314, 185);
+            this.groupBox1.Size = new System.Drawing.Size(314, 397);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add Actors";
@@ -108,6 +115,38 @@
             this.label10.Size = new System.Drawing.Size(14, 13);
             this.label10.TabIndex = 22;
             this.label10.Text = "Y";
+            // 
+            // nudSpawnCount
+            // 
+            this.nudSpawnCount.Location = new System.Drawing.Point(114, 371);
+            this.nudSpawnCount.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.nudSpawnCount.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSpawnCount.Name = "nudSpawnCount";
+            this.nudSpawnCount.Size = new System.Drawing.Size(101, 20);
+            this.nudSpawnCount.TabIndex = 4;
+            this.nudSpawnCount.ThousandsSeparator = true;
+            this.nudSpawnCount.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 373);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Count";
             // 
             // label11
             // 
@@ -264,7 +303,7 @@
             this.nudZITesterMoveTarget.Name = "nudZITesterMoveTarget";
             this.nudZITesterMoveTarget.Size = new System.Drawing.Size(121, 20);
             this.nudZITesterMoveTarget.TabIndex = 14;
-            this.nudZITesterMoveTarget.ValueChanged += new System.EventHandler(this.Validate);
+            this.nudZITesterMoveTarget.ValueChanged += new System.EventHandler(this.ValidateInput);
             // 
             // label6
             // 
@@ -292,7 +331,7 @@
             this.cbActorZIndex.Name = "cbActorZIndex";
             this.cbActorZIndex.Size = new System.Drawing.Size(121, 21);
             this.cbActorZIndex.TabIndex = 10;
-            this.cbActorZIndex.SelectedIndexChanged += new System.EventHandler(this.Validate);
+            this.cbActorZIndex.SelectedIndexChanged += new System.EventHandler(this.ValidateInput);
             // 
             // nudActorSpeed
             // 
@@ -311,7 +350,7 @@
             this.nudActorSpeed.Name = "nudActorSpeed";
             this.nudActorSpeed.Size = new System.Drawing.Size(121, 20);
             this.nudActorSpeed.TabIndex = 9;
-            this.nudActorSpeed.ValueChanged += new System.EventHandler(this.Validate);
+            this.nudActorSpeed.ValueChanged += new System.EventHandler(this.ValidateInput);
             // 
             // label4
             // 
@@ -357,58 +396,68 @@
             this.cbActorType.Name = "cbActorType";
             this.cbActorType.Size = new System.Drawing.Size(121, 21);
             this.cbActorType.TabIndex = 2;
-            this.cbActorType.SelectedIndexChanged += new System.EventHandler(this.Validate);
+            this.cbActorType.SelectedIndexChanged += new System.EventHandler(this.ValidateInput);
             // 
-            // label7
+            // nudRemoveID
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 419);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "Count";
-            // 
-            // nudSpawnCount
-            // 
-            this.nudSpawnCount.Location = new System.Drawing.Point(59, 415);
-            this.nudSpawnCount.Maximum = new decimal(new int[] {
+            this.nudRemoveID.Location = new System.Drawing.Point(126, 415);
+            this.nudRemoveID.Maximum = new decimal(new int[] {
             1000000,
             0,
             0,
             0});
-            this.nudSpawnCount.Minimum = new decimal(new int[] {
+            this.nudRemoveID.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.nudSpawnCount.Name = "nudSpawnCount";
-            this.nudSpawnCount.Size = new System.Drawing.Size(186, 20);
-            this.nudSpawnCount.TabIndex = 4;
-            this.nudSpawnCount.ThousandsSeparator = true;
-            this.nudSpawnCount.Value = new decimal(new int[] {
+            this.nudRemoveID.Name = "nudRemoveID";
+            this.nudRemoveID.Size = new System.Drawing.Size(101, 20);
+            this.nudRemoveID.TabIndex = 25;
+            this.nudRemoveID.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 418);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(102, 13);
+            this.label12.TabIndex = 24;
+            this.label12.Text = "Remove actor by ID";
+            // 
+            // btRemoveActor
+            // 
+            this.btRemoveActor.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btRemoveActor.Location = new System.Drawing.Point(233, 414);
+            this.btRemoveActor.Name = "btRemoveActor";
+            this.btRemoveActor.Size = new System.Drawing.Size(87, 20);
+            this.btRemoveActor.TabIndex = 23;
+            this.btRemoveActor.Text = "Remove actor";
+            this.btRemoveActor.UseVisualStyleBackColor = true;
             // 
             // frmActorDebug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 450);
-            this.Controls.Add(this.nudSpawnCount);
-            this.Controls.Add(this.label7);
+            this.ClientSize = new System.Drawing.Size(339, 450);
+            this.Controls.Add(this.nudRemoveID);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.btRemoveActor);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btAddActor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmActorDebug";
             this.ShowIcon = false;
-            this.Text = "Actor Manager";
+            this.Text = "Actor De/spawner";
             this.Load += new System.EventHandler(this.frmActorDebug_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_X)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorPosition_Y)).EndInit();
@@ -416,7 +465,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudRemoveID)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -446,5 +495,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.NumericUpDown nudActorSize_Y;
         private System.Windows.Forms.NumericUpDown nudActorSize_X;
+        private System.Windows.Forms.NumericUpDown nudRemoveID;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btRemoveActor;
     }
 }

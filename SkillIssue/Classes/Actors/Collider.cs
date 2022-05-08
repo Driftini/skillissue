@@ -10,9 +10,9 @@ namespace SkillIssue
         public Collider(Point _position, Size _size)
         {
             Position = _position;
-            Size = _size;
+            RenderSize = _size;
 
-            Speed = 0;
+            Hitbox = new Rectangle(Point.Empty, RenderSize);
             zIndex = eZINDEX.SOLID;
 
             Sprite = Properties.Resources.floortile;

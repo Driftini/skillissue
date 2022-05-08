@@ -12,7 +12,8 @@ namespace SkillIssue
             Position = _position;
 
             Sprite = Properties.Resources.player;
-            Size = new Size(Sprite.Width, Sprite.Height);
+            RenderSize = new Size(Sprite.Width, Sprite.Height);
+            Hitbox = new Rectangle(new Point(22, 17), new Size(19, 47));
             Speed = 1.4f;
             FrictionX = 1.3f;
             Gravity = true;

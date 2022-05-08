@@ -33,22 +33,7 @@ namespace SkillIssue
         private int Scale { get; set; }
 
         public InputManager Input = new InputManager();
-
-        #region Actor management
-
-        public List<Actor> ActorList = new List<Actor>();
-
-        public void SpawnActor(Actor _toSpawn)
-        {
-
-        }
-
-        public void RemoveActor(int _actorid)
-        {
-
-        }
-
-        #endregion
+        public ActorManager Actors = new ActorManager();
 
         #region Debugging
 
@@ -68,41 +53,50 @@ namespace SkillIssue
                 Debug_ActorForm = true;
                 var _form = new frmActorDebug();
                 
-                void UnsetBool(object sender, FormClosingEventArgs e) {
+                void ActorDebugger_UnsetBool(object sender, FormClosingEventArgs e) {
                     Debug_ActorForm = false;
                 }
-                _form.FormClosing += UnsetBool;
+                _form.FormClosing += ActorDebugger_UnsetBool;
 
-                void FormSpawn(object sender, EventArgs e)
+                void ActorDebugger_Spawn(object sender, EventArgs e)
                 {
                     var _actorType = _form.ReturnActorType();
 
-                    switch (_actorType)
+                    for (int i = 0; i < _form.ReturnSpawnCount(); i++)
                     {
-                        case "Player":
-                            ActorList.Add(new Player(
-                                _position: _form.ReturnActorPosition()
-                            ));
-                            break;
-                        case "Collider":
-                            ActorList.Add(new Collider(
-                                _position: _form.ReturnActorPosition(),
-                                _size: _form.ReturnActorSize()
-                            ));
-                            break;
-                        case "ZIndexTester":
-                            ActorList.Add(new ZIndexTester(
-                                _position: _form.ReturnActorPosition(),
-                                _size: _form.ReturnActorSize(),
-                                _sprite: Properties.Resources.colliderOn,
-                                _zindex: _form.ReturnActorZIndex(),
-                                _speed: _form.ReturnActorSpeed(),
-                                _target: _form.ReturnZITesterMoveTarget()
-                            ));
-                            break;
+                        switch (_actorType)
+                        {
+                            case "Player":
+                                Actors.Add(new Player(
+                                    _position: _form.ReturnActorPosition()
+                                ));
+                                break;
+                            case "Collider":
+                                Actors.Add(new Collider(
+                                    _position: _form.ReturnActorPosition(),
+                                    _size: _form.ReturnActorSize()
+                                ));
+                                break;
+                            case "ZIndexTester":
+                                Actors.Add(new ZIndexTester(
+                                    _position: _form.ReturnActorPosition(),
+                                    _size: _form.ReturnActorSize(),
+                                    _sprite: Properties.Resources.colliderOn,
+                                    _zindex: _form.ReturnActorZIndex(),
+                                    _speed: _form.ReturnActorSpeed(),
+                                    _target: _form.ReturnZITesterMoveTarget()
+                                ));
+                                break;
+                        }
                     }
                 }
-                _form.ReturnConfirmButton().Click += FormSpawn;
+                _form.ReturnSpawnButton().Click += ActorDebugger_Spawn;
+
+                void ActorDebugger_Remove(object sender, EventArgs e)
+                {
+                    Actors.Remove(_form.ReturnRemoveID());
+                }
+                _form.ReturnRemoveButton().Click += ActorDebugger_Remove;
 
                 _form.Show();
             }
@@ -121,9 +115,9 @@ namespace SkillIssue
             if (Input.InputCheck((byte)InputManager.eKEYS.DACTORS))
                 Debug_ToggleActorForm();
 
-            ActorList = ActorList.OrderBy(_actor => _actor.zIndex).ToList();
+            Actors.ActorList = Actors.ActorList.OrderBy(_actor => _actor.zIndex).ToList();
 
-            foreach (Actor _actor in ActorList)
+            foreach (Actor _actor in Actors.ActorList)
             {
 
                 if (_actor is Player)
@@ -135,7 +129,7 @@ namespace SkillIssue
                 _actor.CurrentCollisions.Clear();
                 _actor.IsGrounded = false;
 
-                foreach (Actor _intersecting in ActorList)
+                foreach (Actor _intersecting in Actors.ActorList)
                 {
                     _actor.CollisionUpdate(_intersecting);
                 }
@@ -167,16 +161,17 @@ namespace SkillIssue
 
             GBufferGFX.FillRectangle(new SolidBrush(BGColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
 
-            foreach (Actor _actor in ActorList)
+            foreach (Actor _actor in Actors.ActorList)
             {
                 _actor.Draw(GBufferGFX);
                 
                 if (Debug_Overlays)
                 {
-                    GBufferGFX.DrawString($"{_actor.CurrentCollisions.Count} collisions\n" +
+                    GBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
                         $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(_actor.Position.X, _actor.Position.Y));
 
-                    GBufferGFX.DrawRectangle(new Pen(FontColor), new Rectangle(_actor.Position, _actor.Size));
+                    GBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.ActualHitbox);
+                    //GBufferGFX.DrawRectangle(new Pen(FontColor), new Rectangle(_actor.Position, _actor.RenderSize));
                 }
             }
 
@@ -184,9 +179,9 @@ namespace SkillIssue
             {
                 GBufferGFX.DrawString("Skill Issue prealpha\n" +
                 $"FPS: {FPS}\n" +
-                $"Actors loaded: {ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
+                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
 
-                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor manager", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
             }
 
             _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));

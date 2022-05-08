@@ -10,7 +10,9 @@ namespace SkillIssue
         public int ID { get; set; }
 
         public Point Position { get; set; }
-        public Size Size { get; set; }
+        public Size RenderSize { get; set; }
+        public Rectangle Hitbox { get; set; }
+        public Rectangle ActualHitbox { get; set; }
         public float Speed { get; set; }
         public float FrictionX = 1;
         public float FrictionY = 1;
@@ -37,21 +39,25 @@ namespace SkillIssue
 
         public eZINDEX zIndex;
 
-        public List<Actor> CurrentCollisions = new List<Actor>();
-        //public List
+        public List<int> CurrentCollisions = new List<int>();
 
         public void CollisionUpdate(Actor _collider)
         {
+            ActualHitbox = new Rectangle(
+                location: new Point(
+                        Hitbox.X + Position.X,
+                        Hitbox.Y + Position.Y
+                    ),
+                size: Hitbox.Size
+                );
+
             if (this == _collider) return; // Do not check for collisions if
                                            // the actor currently being tested for collision
                                            // is the same one calling the method
 
-            var rectThis = new Rectangle(Position, Size);
-            var rectCollider = new Rectangle(_collider.Position, _collider.Size);
-
-            if (rectThis.IntersectsWith(rectCollider))
+            if (ActualHitbox.IntersectsWith(_collider.ActualHitbox))
             {
-                CurrentCollisions.Add(_collider);
+                CurrentCollisions.Add(_collider.ID);
 
                 #region Solid collision response
 
@@ -60,30 +66,32 @@ namespace SkillIssue
                     int newPosX = Position.X;
                     int newPosY = Position.Y;
 
-                    rectThis.Intersect(rectCollider);
+                    var intersection = ActualHitbox;
+                    intersection.Intersect(_collider.ActualHitbox);
 
-                    if (rectThis.Right < rectCollider.Left + 10)
+
+                    if (ActualHitbox.Right < intersection.Left + 10)
                     {
-                        newPosX -= rectThis.Size.Width;
+                        newPosX -= intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (rectThis.Left > rectCollider.Right - 10)
+                    if (ActualHitbox.Left > intersection.Right - 10)
                     {
-                        newPosX += rectThis.Size.Width;
+                        newPosX += intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (rectThis.Bottom < rectCollider.Top + 30)
+                    if (ActualHitbox.Bottom < intersection.Top + 30)
                     {
-                        newPosY -= rectThis.Size.Height + 0;
+                        newPosY -= intersection.Height + 0;
                         Acceleration.Y = 0;
                         IsGrounded = true;
                     }
 
-                    if (rectThis.Top > rectCollider.Bottom - 30)
+                    if (ActualHitbox.Top > intersection.Bottom - 30)
                     {
-                        newPosY += rectThis.Size.Height;
+                        newPosY += intersection.Height;
                         Acceleration.Y = 0;
                     }
 
@@ -129,7 +137,7 @@ namespace SkillIssue
 
         public void Draw(Graphics _gfx)
         {
-            _gfx.DrawImage(Sprite, new Rectangle(Position.X, Position.Y, Size.Width, Size.Height));
+            _gfx.DrawImage(Sprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
         }
     }
 }
