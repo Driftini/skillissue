@@ -8,21 +8,21 @@ namespace SkillIssue
 {
     class Game
     {
-        public Game(Form _form, Size _resolution, int _scale) {
-            GameForm = _form;
-            Resolution = _resolution;
-            Scale = _scale;
+        public Game(Form form, Size resolution, int scale) {
+            GameForm = form;
+            Resolution = resolution;
+            RenderScale = scale;
 
             // Adjust window size and position to the game resolution
             Size _oldSize = GameForm.ClientSize;
             GameForm.ClientSize = new Size(
-                Resolution.Width * Scale - 1,
-                Resolution.Height * Scale - 1
+                Resolution.Width * RenderScale - 1,
+                Resolution.Height * RenderScale - 1
             );
 
             GameForm.Location = new Point(
-                (GameForm.Location.X - (int)(_oldSize.Width * Scale * 1.3)),
-                (GameForm.Location.Y - _oldSize.Height * Scale)
+                (GameForm.Location.X - (int)(_oldSize.Width * RenderScale * 1.3)),
+                (GameForm.Location.Y - _oldSize.Height * RenderScale)
             );
         }
 
@@ -30,7 +30,7 @@ namespace SkillIssue
 
         public Size Resolution { get; set; }
 
-        private int Scale { get; set; }
+        private int RenderScale { get; set; }
 
         public InputManager Input = new InputManager();
         public ActorManager Actors = new ActorManager();
@@ -51,54 +51,54 @@ namespace SkillIssue
             if (!Debug_ActorForm) 
             {
                 Debug_ActorForm = true;
-                var _form = new frmActorDebug();
+                var actorForm = new frmActorDebug();
                 
                 void ActorDebugger_UnsetBool(object sender, FormClosingEventArgs e) {
                     Debug_ActorForm = false;
                 }
-                _form.FormClosing += ActorDebugger_UnsetBool;
+                actorForm.FormClosing += ActorDebugger_UnsetBool;
 
                 void ActorDebugger_Spawn(object sender, EventArgs e)
                 {
-                    var _actorType = _form.ReturnActorType();
+                    var _actorType = actorForm.ReturnActorType();
 
-                    for (int i = 0; i < _form.ReturnSpawnCount(); i++)
+                    for (int i = 0; i < actorForm.ReturnSpawnCount(); i++)
                     {
                         switch (_actorType)
                         {
                             case "Player":
                                 Actors.Add(new Player(
-                                    _position: _form.ReturnActorPosition()
+                                    position: actorForm.ReturnActorPosition()
                                 ));
                                 break;
                             case "Collider":
                                 Actors.Add(new Collider(
-                                    _position: _form.ReturnActorPosition(),
-                                    _size: _form.ReturnActorSize()
+                                    position: actorForm.ReturnActorPosition(),
+                                    size: actorForm.ReturnActorSize()
                                 ));
                                 break;
                             case "ZIndexTester":
                                 Actors.Add(new ZIndexTester(
-                                    _position: _form.ReturnActorPosition(),
-                                    _size: _form.ReturnActorSize(),
-                                    _sprite: Properties.Resources.colliderOn,
-                                    _zindex: _form.ReturnActorZIndex(),
-                                    _speed: _form.ReturnActorSpeed(),
-                                    _target: _form.ReturnZITesterMoveTarget()
+                                    position: actorForm.ReturnActorPosition(),
+                                    size: actorForm.ReturnActorSize(),
+                                    sprite: Properties.Resources.colliderOn,
+                                    zindex: actorForm.ReturnActorZIndex(),
+                                    speed: actorForm.ReturnActorSpeed(),
+                                    target: actorForm.ReturnZITesterMoveTarget()
                                 ));
                                 break;
                         }
                     }
                 }
-                _form.ReturnSpawnButton().Click += ActorDebugger_Spawn;
+                actorForm.ReturnSpawnButton().Click += ActorDebugger_Spawn;
 
                 void ActorDebugger_Remove(object sender, EventArgs e)
                 {
-                    Actors.Remove(_form.ReturnRemoveID());
+                    Actors.Remove(actorForm.ReturnRemoveID());
                 }
-                _form.ReturnRemoveButton().Click += ActorDebugger_Remove;
+                actorForm.ReturnRemoveButton().Click += ActorDebugger_Remove;
 
-                _form.Show();
+                actorForm.Show();
             }
         }
 
@@ -108,6 +108,8 @@ namespace SkillIssue
 
         public void Update()
         {
+            #region Debug key checks
+
             if (Input.InputCheck((byte)InputManager.eKEYS.DGENERAL))
                 Debug_General = !Debug_General;
             if (Input.InputCheck((byte)InputManager.eKEYS.DOVERLAYS))
@@ -115,79 +117,104 @@ namespace SkillIssue
             if (Input.InputCheck((byte)InputManager.eKEYS.DACTORS))
                 Debug_ToggleActorForm();
 
+            #endregion
+
             Actors.ActorList = Actors.ActorList.OrderBy(_actor => _actor.zIndex).ToList();
+
+            List<Request> _clonedRequests = new List<Request>();
 
             foreach (Actor _actor in Actors.ActorList)
             {
-
+                // Input
                 if (_actor is Player)
                 {
                     var _player = (Player)_actor;
                     _player.InputUpdate(Input);
                 }
 
+                // Requests
+                foreach (Request _request in _actor.CurrentRequests)
+                    _clonedRequests.Add(_request); // Copy all requests locally,
+                                                   // the actor list cannot be edited mid-loop
+                _actor.CurrentRequests.Clear();
+
+                // Collisions
                 _actor.CurrentCollisions.Clear();
                 _actor.IsGrounded = false;
 
                 foreach (Actor _intersecting in Actors.ActorList)
-                {
                     _actor.CollisionUpdate(_intersecting);
-                }
 
                 _actor.Update();
             }
+
+            foreach (Request _request in _clonedRequests)
+            {
+                switch (_request.Type)
+                {
+                    case Request.eREQUESTTYPE.SPAWN:
+                        Actors.Add(_request.Spawn);
+                        break;
+                    case Request.eREQUESTTYPE.REMOVE:
+                        Actors.Remove(_request.Remove);
+                        break;
+                }
+            }
         }
 
-        public void Render(Graphics _gfx)
+        public void Render(Graphics _GFX)
         {
-            Bitmap GBuffer = new Bitmap(Resolution.Width, Resolution.Height);
-            Graphics GBufferGFX = Graphics.FromImage(GBuffer);
+            Bitmap _gBuffer = new Bitmap(Resolution.Width, Resolution.Height);
+            Graphics _gBufferGFX = Graphics.FromImage(_gBuffer);
 
             #region Graphics configuration
-            GBufferGFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            GBufferGFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-            GBufferGFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            GBufferGFX.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            GBufferGFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+            _gBufferGFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            _gBufferGFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            _gBufferGFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            _gBufferGFX.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            _gBufferGFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
 
-            _gfx.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            _gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-            _gfx.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            _gfx.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+            _GFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            _GFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            _GFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            _GFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
             #endregion
 
-            Color BGColor = Color.DarkOliveGreen;
-            Color FontColor = Color.LightGray;
+            Color _bgColor = Color.DarkOliveGreen;
+            Color _fontColor = Color.LightGray;
 
-            GBufferGFX.FillRectangle(new SolidBrush(BGColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
+            _gBufferGFX.FillRectangle(new SolidBrush(_bgColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
 
             foreach (Actor _actor in Actors.ActorList)
             {
-                _actor.Draw(GBufferGFX);
-                
+                _actor.Draw(_gBufferGFX);
+
+                #region Actor overlays
+
                 if (Debug_Overlays)
                 {
-                    GBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
-                        $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(_actor.Position.X, _actor.Position.Y));
+                    _gBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
+                        $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(_actor.Position.X, _actor.Position.Y));
 
-                    GBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.ActualHitbox);
-                    //GBufferGFX.DrawRectangle(new Pen(FontColor), new Rectangle(_actor.Position, _actor.RenderSize));
+                    _gBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.ActualHitbox);
                 }
+
+                #endregion
             }
 
             if (Debug_General)
             {
-                GBufferGFX.DrawString("Skill Issue prealpha\n" +
+                _gBufferGFX.DrawString("Skill Issue prealpha\n" +
                 $"FPS: {FPS}\n" +
-                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(FontColor), new Point(5, 8));
+                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 8));
 
-                GBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(FontColor), new Point(3, Resolution.Height - 16));
+                _gBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(_fontColor), new Point(3, Resolution.Height - 16));
             }
 
-            _gfx.DrawImage(GBuffer, new Rectangle(0, 0, Resolution.Width * Scale, Resolution.Height * Scale));
+            _GFX.DrawImage(_gBuffer, new Rectangle(0, 0, Resolution.Width * RenderScale, Resolution.Height * RenderScale));
 
-            GBuffer.Dispose();
-            GBufferGFX.Dispose();
+            _gBuffer.Dispose();
+            _gBufferGFX.Dispose();
 
             FPSstep++;
         }

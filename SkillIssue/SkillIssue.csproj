@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ActorManager.cs" />
+    <Compile Include="Classes\Actors\NullActor.cs" />
     <Compile Include="Classes\Request.cs" />
     <Compile Include="frmActorDebug.cs">
       <SubType>Form</SubType>

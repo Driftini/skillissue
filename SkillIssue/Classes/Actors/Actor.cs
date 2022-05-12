@@ -41,6 +41,8 @@ namespace SkillIssue
 
         public List<int> CurrentCollisions = new List<int>();
 
+        public List<Request> CurrentRequests = new List<Request>();
+
         public void CollisionUpdate(Actor _collider)
         {
             ActualHitbox = new Rectangle(
@@ -134,6 +136,15 @@ namespace SkillIssue
         }
 
         public abstract void Update();
+
+        public void RemoveSelf() {
+            CurrentRequests.Add(
+                new Request(
+                    type: Request.eREQUESTTYPE.REMOVE,
+                    remove: ID
+                    )
+                );
+        }
 
         public void Draw(Graphics _gfx)
         {

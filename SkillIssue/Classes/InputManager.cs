@@ -20,17 +20,17 @@
 
         private short Input = 0;
 
-        public void InputSet(byte _key, bool _pressed)
+        public void InputSet(byte key, bool pressed)
         {
-            if (_pressed)
-                Input |= (short)(1 << _key);
+            if (pressed)
+                Input |= (short)(1 << key);
             else
-                Input &= (short)~(1 << _key);
+                Input &= (short)~(1 << key);
         }
 
-        public bool InputCheck(byte _key)
+        public bool InputCheck(byte key)
         {
-            if ((Input & (1 << _key)) > 0)
+            if ((Input & (1 << key)) > 0)
                 return true;
             else
                 return false;

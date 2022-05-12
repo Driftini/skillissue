@@ -7,9 +7,9 @@ namespace SkillIssue
 {
     class Player : LiveEntity
     {
-        public Player(Point _position)
+        public Player(Point position)
         {
-            Position = _position;
+            Position = position;
 
             Sprite = Properties.Resources.player;
             RenderSize = new Size(Sprite.Width, Sprite.Height);

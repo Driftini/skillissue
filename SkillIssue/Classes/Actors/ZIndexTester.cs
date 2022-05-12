@@ -7,14 +7,14 @@ namespace SkillIssue
 {
     class ZIndexTester : Actor
     {
-        public ZIndexTester(Point _position, Bitmap _sprite, eZINDEX _zindex, Size _size, float _speed, int _target = 25)
+        public ZIndexTester(Point position, Bitmap sprite, eZINDEX zindex, Size size, float speed, int target = 25)
         {
-            Sprite = _sprite;
-            Position = _position;
-            RenderSize = _size;
-            zIndex = _zindex;
-            Speed = _speed;
-            MoveTarget = _target;
+            Sprite = sprite;
+            Position = position;
+            RenderSize = size;
+            zIndex = zindex;
+            Speed = speed;
+            MoveTarget = target;
 
             FrictionX = 1.3f;
             FrictionY = 1.3f;
@@ -23,7 +23,7 @@ namespace SkillIssue
 
         private int Facing = 0; // 0 left, 1 down, 2 right, 3 up
         private int MoveCounter = 0;
-        private int MoveTarget;
+        private int MoveTarget { get; set; }
 
         public override void Update()
         {

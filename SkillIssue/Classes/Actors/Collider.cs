@@ -7,10 +7,10 @@ namespace SkillIssue
 {
     class Collider : Actor
     {
-        public Collider(Point _position, Size _size)
+        public Collider(Point position, Size size)
         {
-            Position = _position;
-            RenderSize = _size;
+            Position = position;
+            RenderSize = size;
 
             Hitbox = new Rectangle(Point.Empty, RenderSize);
             zIndex = eZINDEX.SOLID;
