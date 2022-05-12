@@ -51,7 +51,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\ActorManager.cs" />
+    <Compile Include="Classes\Actors\AnimationTester.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
+    <Compile Include="Classes\FrameData.cs" />
     <Compile Include="Classes\Request.cs" />
     <Compile Include="frmActorDebug.cs">
       <SubType>Form</SubType>
@@ -114,6 +116,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\floortile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_A1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_A2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_A3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_A4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_A5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_B1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_B2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_B3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_B4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_B5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ANIMTEST_COLL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

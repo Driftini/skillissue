@@ -14,6 +14,7 @@ namespace SkillIssue
     {
         string[] ACTORS =
         {
+            "AnimationTester",
             "Player",
             "Collider",
             "ZIndexTester"
@@ -49,6 +50,12 @@ namespace SkillIssue
 
                 switch (cbActorType.SelectedItem.ToString())
                 {
+                    case "AnimationTester":
+                        nudActorPosition_X.Enabled = true;
+                        nudActorPosition_Y.Enabled = true;
+                        nudActorSize_X.Enabled = true;
+                        nudActorSize_Y.Enabled = true;
+                        break;
                     case "Player":
                         nudActorPosition_X.Enabled = true;
                         nudActorPosition_Y.Enabled = true;

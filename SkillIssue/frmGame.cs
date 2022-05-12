@@ -74,7 +74,6 @@ namespace SkillIssue
             _SkillIssue.Actors.Add(
                 new ZIndexTester(
                     position: new Point(200, 0),
-                    sprite: Properties.Resources.colliderOff,
                     zindex: Actor.eZINDEX.BACKGROUND,
                     size: new Size(400, 400),
                     speed: 1.00000001f,
@@ -84,12 +83,11 @@ namespace SkillIssue
 
             var rnd = new Random();
 
-            for (int i = 0; i <= 2; i++)
+            for (int i = 0; i <= -1; i++)
             {
                 _SkillIssue.Actors.Add(
                     new ZIndexTester(
                         position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
-                        sprite: Properties.Resources.colliderOn,
                         zindex: Actor.eZINDEX.PARTICLE,
                         size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
                         speed: (rnd.Next(100, 500) / 100),

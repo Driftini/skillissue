@@ -118,6 +118,39 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ANIMTEST_A1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_A1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_A2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_A2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_A3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_A3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_A4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_A4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_A5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_A5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_B1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_B1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_B2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_B2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_B3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_B3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_B4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_B4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_B5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_B5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ANIMTEST_COLL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ANIMTEST_COLL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="colliderOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\colliderOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

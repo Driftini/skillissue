@@ -12,10 +12,20 @@ namespace SkillIssue
             Position = position;
             RenderSize = size;
 
-            Hitbox = new Rectangle(Point.Empty, RenderSize);
             zIndex = eZINDEX.SOLID;
 
-            Sprite = Properties.Resources.floortile;
+            #region States
+
+            FrameData[] Frames_Spawn =
+            {
+                new FrameData(1, new Rectangle(Point.Empty, RenderSize), Properties.Resources.floortile)
+            };
+
+            States.Add(
+                new ActorState("Spawn", Frames_Spawn)
+                );
+
+            #endregion
         }
 
         public override void Update()

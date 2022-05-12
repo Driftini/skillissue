@@ -66,6 +66,12 @@ namespace SkillIssue
                     {
                         switch (_actorType)
                         {
+                            case "AnimationTester":
+                                Actors.Add(new AnimationTester(
+                                    position: actorForm.ReturnActorPosition(),
+                                    size: actorForm.ReturnActorSize()
+                                    ));
+                                break;
                             case "Player":
                                 Actors.Add(new Player(
                                     position: actorForm.ReturnActorPosition()
@@ -81,7 +87,6 @@ namespace SkillIssue
                                 Actors.Add(new ZIndexTester(
                                     position: actorForm.ReturnActorPosition(),
                                     size: actorForm.ReturnActorSize(),
-                                    sprite: Properties.Resources.colliderOn,
                                     zindex: actorForm.ReturnActorZIndex(),
                                     speed: actorForm.ReturnActorSpeed(),
                                     target: actorForm.ReturnZITesterMoveTarget()
@@ -138,12 +143,15 @@ namespace SkillIssue
                                                    // the actor list cannot be edited mid-loop
                 _actor.CurrentRequests.Clear();
 
+                // Animations
+                _actor.UpdateAnimations();
+
                 // Collisions
                 _actor.CurrentCollisions.Clear();
                 _actor.IsGrounded = false;
 
                 foreach (Actor _intersecting in Actors.ActorList)
-                    _actor.CollisionUpdate(_intersecting);
+                    _actor.UpdateCollisions(_intersecting);
 
                 _actor.Update();
             }
@@ -196,7 +204,7 @@ namespace SkillIssue
                     _gBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
                         $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(_actor.Position.X, _actor.Position.Y));
 
-                    _gBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.ActualHitbox);
+                    _gBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.CurrentHitbox);
                 }
 
                 #endregion

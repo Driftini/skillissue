@@ -7,9 +7,8 @@ namespace SkillIssue
 {
     class ZIndexTester : Actor
     {
-        public ZIndexTester(Point position, Bitmap sprite, eZINDEX zindex, Size size, float speed, int target = 25)
+        public ZIndexTester(Point position, eZINDEX zindex, Size size, float speed, int target = 25)
         {
-            Sprite = sprite;
             Position = position;
             RenderSize = size;
             zIndex = zindex;
@@ -19,7 +18,21 @@ namespace SkillIssue
             FrictionX = 1.3f;
             FrictionY = 1.3f;
             IsSolid = false;
-    }
+
+            #region States
+
+            FrameData[] Frames_Spawn =
+            {
+                new FrameData(1, Rectangle.Empty, Properties.Resources.colliderOff)
+            };
+
+            States.Add(
+                new ActorState("Spawn", Frames_Spawn)
+                );
+
+            #endregion
+        }
+
 
         private int Facing = 0; // 0 left, 1 down, 2 right, 3 up
         private int MoveCounter = 0;
@@ -53,7 +66,7 @@ namespace SkillIssue
                 Facing++;
             };
 
-            MovementUpdate();
+            UpdateMovement();
         }
     }
 }

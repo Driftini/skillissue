@@ -11,19 +11,26 @@ namespace SkillIssue
 
         public Point Position { get; set; }
         public Size RenderSize { get; set; }
-        public Rectangle Hitbox { get; set; }
-        public Rectangle ActualHitbox { get; set; }
+
         public float Speed { get; set; }
         public float FrictionX = 1;
         public float FrictionY = 1;
+        public Vector2 Velocity;
+        public Vector2 Acceleration;
+
         public bool Gravity { get; set; }
         public bool IsSolid { get; set; }
         public bool IsGrounded { get; set; }
 
-        public Vector2 Velocity;
-        public Vector2 Acceleration;
+        public int FrameProgress = 0;
+        public int FramePointer = 0;
+        public int StatePointer = 0;
+        public ActorState CurrentState { get; set; }
+        public FrameData CurrentFrame { get; set; }
+        public List<ActorState> States = new List<ActorState>();
 
-        public Bitmap Sprite;
+        public Rectangle CurrentHitbox { get; set; }
+        public Bitmap CurrentSprite { get; set; }
 
         public enum eZINDEX
         {
@@ -43,21 +50,13 @@ namespace SkillIssue
 
         public List<Request> CurrentRequests = new List<Request>();
 
-        public void CollisionUpdate(Actor _collider)
+        public void UpdateCollisions(Actor _collider)
         {
-            ActualHitbox = new Rectangle(
-                location: new Point(
-                        Hitbox.X + Position.X,
-                        Hitbox.Y + Position.Y
-                    ),
-                size: Hitbox.Size
-                );
-
             if (this == _collider) return; // Do not check for collisions if
                                            // the actor currently being tested for collision
                                            // is the same one calling the method
 
-            if (ActualHitbox.IntersectsWith(_collider.ActualHitbox))
+            if (CurrentHitbox.IntersectsWith(_collider.CurrentHitbox))
             {
                 CurrentCollisions.Add(_collider.ID);
 
@@ -68,30 +67,30 @@ namespace SkillIssue
                     int newPosX = Position.X;
                     int newPosY = Position.Y;
 
-                    var intersection = ActualHitbox;
-                    intersection.Intersect(_collider.ActualHitbox);
+                    var intersection = CurrentHitbox;
+                    intersection.Intersect(_collider.CurrentHitbox);
 
 
-                    if (ActualHitbox.Right < intersection.Left + 10)
+                    if (CurrentHitbox.Right < intersection.Left + 10)
                     {
                         newPosX -= intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (ActualHitbox.Left > intersection.Right - 10)
+                    if (CurrentHitbox.Left > intersection.Right - 10)
                     {
                         newPosX += intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (ActualHitbox.Bottom < intersection.Top + 30)
+                    if (CurrentHitbox.Bottom < intersection.Top + 30)
                     {
                         newPosY -= intersection.Height + 0;
                         Acceleration.Y = 0;
                         IsGrounded = true;
                     }
 
-                    if (ActualHitbox.Top > intersection.Bottom - 30)
+                    if (CurrentHitbox.Top > intersection.Bottom - 30)
                     {
                         newPosY += intersection.Height;
                         Acceleration.Y = 0;
@@ -104,7 +103,7 @@ namespace SkillIssue
             }
         }
 
-        public void MovementUpdate()
+        public void UpdateMovement()
         {
             Vector2.Normalize(Velocity); // This prevents the player from moving faster diagonally
 
@@ -135,6 +134,37 @@ namespace SkillIssue
             );
         }
 
+        public void UpdateAnimations()
+        {   
+            if (States.Count > 0)
+            {
+                CurrentState = States[StatePointer];
+                CurrentFrame = CurrentState.Frames[FramePointer];
+
+                FrameProgress++;
+                if (FrameProgress >= CurrentFrame.Duration)
+                {
+                    FrameProgress = 0;
+                    FramePointer++;
+                }
+
+                if (FramePointer >= CurrentState.Frames.Length)
+                {
+                    FrameProgress = 0;
+                    FramePointer = 0;
+                }
+
+                CurrentSprite = CurrentFrame.Sprite;
+                CurrentHitbox = new Rectangle(
+                    location: new Point(
+                            CurrentFrame.Hitbox.X + Position.X,
+                            CurrentFrame.Hitbox.Y + Position.Y
+                        ),
+                    size: CurrentFrame.Hitbox.Size
+                    );
+            }
+        }
+
         public abstract void Update();
 
         public void RemoveSelf() {
@@ -148,7 +178,8 @@ namespace SkillIssue
 
         public void Draw(Graphics _gfx)
         {
-            _gfx.DrawImage(Sprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
+            if (CurrentSprite != null)
+                _gfx.DrawImage(CurrentSprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
         }
     }
 }

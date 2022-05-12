@@ -11,49 +11,59 @@ namespace SkillIssue
         {
             Position = position;
 
-            Sprite = Properties.Resources.player;
-            RenderSize = new Size(Sprite.Width, Sprite.Height);
-            Hitbox = new Rectangle(new Point(22, 17), new Size(19, 47));
+            zIndex = eZINDEX.PLAYER;
             Speed = 1.4f;
             FrictionX = 1.3f;
             Gravity = true;
             IsSolid = true;
-            zIndex = eZINDEX.PLAYER;
-    }
+
+            #region States
+
+            FrameData[] Frames_Spawn =
+            {
+                new FrameData(1, new Rectangle(new Point(22, 17), new Size(19, 47)), Properties.Resources.player)
+            };
+
+            States.Add(
+                new ActorState("Spawn", Frames_Spawn)
+            );
+
+            #endregion
+        }
 
         public override void Update()
         {
-            MovementUpdate();
+            UpdateMovement();
         }
 
         public void InputUpdate(InputManager _input)
         {
             #region Input
 
-            if (_input.InputCheck((byte)InputManager.eKEYS.LEFT))
-            {
-                Velocity.X -= Speed;
-            }
-
-            if (_input.InputCheck((byte)InputManager.eKEYS.RIGHT))
-            {
-                Velocity.X += Speed;
-            }
-
-            if (_input.InputCheck((byte)InputManager.eKEYS.UP))
-            {
-                if (IsGrounded)
+                if (_input.InputCheck((byte)InputManager.eKEYS.LEFT))
                 {
-                    Velocity.Y -= 7;
+                    Velocity.X -= Speed;
                 }
-            }
 
-            /*if (_input.InputCheck((byte)InputManager.eKEYS.DOWN))
-            {
-                Velocity.Y += Speed;
-            }*/
+                if (_input.InputCheck((byte)InputManager.eKEYS.RIGHT))
+                {
+                    Velocity.X += Speed;
+                }
 
-            #endregion
+                if (_input.InputCheck((byte)InputManager.eKEYS.UP))
+                {
+                    if (IsGrounded)
+                    {
+                        Velocity.Y -= 7;
+                    }
+                }
+
+                /*if (_input.InputCheck((byte)InputManager.eKEYS.DOWN))
+                {
+                    Velocity.Y += Speed;
+                }*/
+
+                #endregion
         }
     }
 }
