@@ -19,7 +19,7 @@ namespace SkillIssue
         {
             Type = type;
             Spawn = new NullActor();
-            Remove = -1;
+            Remove = remove;
         }
 
         public enum eREQUESTTYPE

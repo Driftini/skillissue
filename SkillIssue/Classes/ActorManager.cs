@@ -13,29 +13,29 @@ namespace SkillIssue
 
         public Actor FindID(int _id)
         {
-            return ActorList.Find(_actor => _actor.ID == _id);
+            return ActorList.Find(actor => actor.ID == _id);
         }
 
-        public void Add(Actor _actor)
+        public void Add(Actor actor)
         {
             var idAttempt = 1;
 
             while (UsedIDs.Contains(idAttempt))
                 idAttempt++;
 
-            _actor.ID = idAttempt;
+            actor.ID = idAttempt;
             UsedIDs.Add(idAttempt);
-            ActorList.Add(_actor);
+            ActorList.Add(actor);
         }
 
-        public void Remove(int _id)
+        public void Remove(int id)
         {
-            var toRemove = FindID(_id);
+            var toRemove = FindID(id);
 
             if (!(toRemove is null))
             {
                 ActorList.Remove(toRemove);
-                UsedIDs.Remove(_id);
+                UsedIDs.Remove(id);
             }
         }
     }

@@ -19,7 +19,8 @@ namespace SkillIssue
                 new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A2),
                 new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A3),
                 new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A4),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A5)
+                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A5),
+                new FrameData(1, Rectangle.Empty, Properties.Resources.ANIMTEST_A5)
             };
 
             FrameData[] Frames_B =
@@ -45,6 +46,9 @@ namespace SkillIssue
 
         public override void Update()
         {
+            if (StatePointer == 0 && FramePointer == 5)
+                loopcount++;
+            
             if (loopcount >= 1)
             {
                 loopcount = 0;

@@ -50,6 +50,15 @@ namespace SkillIssue
 
         public List<Request> CurrentRequests = new List<Request>();
 
+        public void SetState(string label)
+        {
+            var state = States.Find(state => States.IndexOf(state) == label);
+
+            FrameProgress = 0;
+            FramePointer = 0;
+            StatePointer = 0;
+        }
+
         public void UpdateCollisions(Actor _collider)
         {
             if (this == _collider) return; // Do not check for collisions if

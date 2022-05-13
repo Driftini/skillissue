@@ -11,6 +11,7 @@ namespace SkillIssue
         {
             Position = position;
 
+            RenderSize = new Size(64, 64);
             zIndex = eZINDEX.PLAYER;
             Speed = 1.4f;
             FrictionX = 1.3f;
