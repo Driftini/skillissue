@@ -46,17 +46,35 @@ namespace SkillIssue
 
         public eZINDEX zIndex;
 
-        public List<int> CurrentCollisions = new List<int>();
+        public List<Actor> CurrentCollisions = new List<Actor>();
 
         public List<Request> CurrentRequests = new List<Request>();
 
+        public int FindStateIndex(string label)
+        {
+            var stateFound = States.Find(state => state.Label == label);
+
+            if (stateFound != null)
+                return States.IndexOf(stateFound);
+            else
+                return 0;
+        }
+
         public void SetState(string label)
         {
-            var state = States.Find(state => States.IndexOf(state) == label);
+            var stateIndex = FindStateIndex(label);
+
+            if (stateIndex < 0)
+                return;
 
             FrameProgress = 0;
             FramePointer = 0;
-            StatePointer = 0;
+            StatePointer = stateIndex;
+        }
+
+        public string GetState()
+        {
+            return States[StatePointer].Label;
         }
 
         public void UpdateCollisions(Actor _collider)
@@ -67,7 +85,7 @@ namespace SkillIssue
 
             if (CurrentHitbox.IntersectsWith(_collider.CurrentHitbox))
             {
-                CurrentCollisions.Add(_collider.ID);
+                CurrentCollisions.Add(_collider);
 
                 #region Solid collision response
 
@@ -158,10 +176,7 @@ namespace SkillIssue
                 }
 
                 if (FramePointer >= CurrentState.Frames.Length)
-                {
-                    FrameProgress = 0;
-                    FramePointer = 0;
-                }
+                    SetState(CurrentState.NextState);
 
                 CurrentSprite = CurrentFrame.Sprite;
                 CurrentHitbox = new Rectangle(

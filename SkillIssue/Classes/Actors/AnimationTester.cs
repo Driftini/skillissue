@@ -13,32 +13,43 @@ namespace SkillIssue
             RenderSize = size;
             zIndex = eZINDEX.ENTITY;
 
+            var rect = new Rectangle(Point.Empty, RenderSize);
+
             FrameData[] Frames_A =
             {
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A1),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A2),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A3),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A4),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_A5),
-                new FrameData(1, Rectangle.Empty, Properties.Resources.ANIMTEST_A5)
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_A1),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_A2),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_A3),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_A4),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_A5)
             };
 
             FrameData[] Frames_B =
             {
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_B5),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_B4),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_B3),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_B2),
-                new FrameData(7, Rectangle.Empty, Properties.Resources.ANIMTEST_B1),
-                new FrameData(1, Rectangle.Empty, Properties.Resources.ANIMTEST_COLL)
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_B5),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_B4),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_B3),
+                new FrameData(7, rect, Properties.Resources.ANIMTEST_B2),
+                new FrameData(6, rect, Properties.Resources.ANIMTEST_B1),
+                new FrameData(1, rect, Properties.Resources.ANIMTEST_B1)
+            };
+
+            FrameData[] Frames_Colliding =
+            {
+                new FrameData(20, rect, Properties.Resources.ANIMTEST_COLL),
+                new FrameData(1, rect, Properties.Resources.ANIMTEST_COLL)
             };
 
             States.Add(
-                new ActorState("A", Frames_A)
+                new ActorState("A", Frames_A, "B")
                 );
 
             States.Add(
-                new ActorState("B", Frames_B)
+                new ActorState("B", Frames_B, "A")
+                );
+
+            States.Add(
+                new ActorState("Colliding", Frames_Colliding, "A")
                 );
         }
 
@@ -46,19 +57,16 @@ namespace SkillIssue
 
         public override void Update()
         {
-            if (StatePointer == 0 && FramePointer == 5)
+            if (GetState() == "B" && FramePointer == 5)
                 loopcount++;
-            
-            if (loopcount >= 1)
+
+            foreach (Actor a in CurrentCollisions)
             {
-                loopcount = 0;
-                if (StatePointer == 0)
-                    StatePointer = 1;
-                else
-                    StatePointer = 0;
+                if (a is Player)
+                    SetState("Colliding");
             }
 
-            if (StatePointer == 1 && FramePointer == 5)
+            if (GetState() == "A" && loopcount >= 5)
                 RemoveSelf();
         }
     }

@@ -21,13 +21,19 @@ namespace SkillIssue
 
     public class ActorState
     {
-        public ActorState(string label, FrameData[] framesarray)
+        public ActorState(string label, FrameData[] framesarray, string nextstate = "")
         {
             Label = label;
             Frames = framesarray;
+
+            if (nextstate == "")
+                nextstate = Label;
+
+            NextState = nextstate;
         }
 
         public string Label { get; set; }
+        public string NextState { get; set; }
         public FrameData[] Frames { get; set; }
     }
 }
