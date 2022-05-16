@@ -97,7 +97,6 @@ namespace SkillIssue
                     var intersection = CurrentHitbox;
                     intersection.Intersect(_collider.CurrentHitbox);
 
-
                     if (CurrentHitbox.Right < intersection.Left + 10)
                     {
                         newPosX -= intersection.Width;

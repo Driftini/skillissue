@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Classes\ActorManager.cs" />
     <Compile Include="Classes\Actors\AnimationTester.cs" />
+    <Compile Include="Classes\Actors\HUD.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
     <Compile Include="Classes\FrameData.cs" />
     <Compile Include="Classes\Request.cs" />
