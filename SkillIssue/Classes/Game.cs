@@ -19,11 +19,6 @@ namespace SkillIssue
                 Resolution.Width * RenderScale - 1,
                 Resolution.Height * RenderScale - 1
             );
-
-            GameForm.Location = new Point(
-                (GameForm.Location.X - (int)(_oldSize.Width * RenderScale * 1.3)),
-                (GameForm.Location.Y - _oldSize.Height * RenderScale)
-            );
         }
 
         public Form GameForm { get; set; }
@@ -156,55 +151,56 @@ namespace SkillIssue
                 _actor.Update();
             }
 
-            foreach (Request _request in _clonedRequests)
+            foreach (Request r in _clonedRequests)
             {
-                switch (_request.Type)
+                switch (r.Type)
                 {
                     case Request.eREQUESTTYPE.SPAWN:
-                        Actors.Add(_request.Spawn);
+                        Actors.Add(r.Spawn);
                         break;
                     case Request.eREQUESTTYPE.REMOVE:
-                        Actors.Remove(_request.Remove);
+                        Actors.Remove(r.Remove);
                         break;
                 }
             }
         }
 
-        public void Render(Graphics _GFX)
+        public void Render(Graphics GFX)
         {
-            Bitmap _gBuffer = new Bitmap(Resolution.Width, Resolution.Height);
-            Graphics _gBufferGFX = Graphics.FromImage(_gBuffer);
+            Bitmap gBuffer = new Bitmap(Resolution.Width, Resolution.Height);
+            Graphics gBufferGFX = Graphics.FromImage(gBuffer);
 
             #region Graphics configuration
-            _gBufferGFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            _gBufferGFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-            _gBufferGFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            _gBufferGFX.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            _gBufferGFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+            gBufferGFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            gBufferGFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            gBufferGFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            gBufferGFX.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            gBufferGFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
 
-            _GFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
-            _GFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
-            _GFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
-            _GFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
+            GFX.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighSpeed;
+            GFX.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+            GFX.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.NearestNeighbor;
+            GFX.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighSpeed;
             #endregion
 
             Color _bgColor = Color.DarkOliveGreen;
             Color _fontColor = Color.LightGray;
 
-            _gBufferGFX.FillRectangle(new SolidBrush(_bgColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
+            gBufferGFX.FillRectangle(new SolidBrush(_bgColor), new Rectangle(0, 0, Resolution.Width, Resolution.Height));
 
             foreach (Actor _actor in Actors.ActorList)
             {
-                _actor.Draw(_gBufferGFX);
+                _actor.Draw(gBufferGFX);
 
                 #region Actor overlays
 
                 if (Debug_Overlays)
                 {
-                    _gBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
-                        $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(_actor.Position.X, _actor.Position.Y));
+                    gBufferGFX.DrawString($"ID {_actor.ID} / {_actor.CurrentCollisions.Count} collisions\n" +
+                        $"{_actor.Position} {_actor.Acceleration}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new PointF(_actor.Position.X, _actor.Position.Y));
 
-                    _gBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.CurrentHitbox);
+                    gBufferGFX.DrawRectangle(new Pen(Color.Blue), _actor.Position.X, _actor.Position.Y, _actor.RenderSize.Width, _actor.RenderSize.Height);
+                    gBufferGFX.DrawRectangle(new Pen(Color.Red), _actor.CurrentHitbox);
                 }
 
                 #endregion
@@ -212,17 +208,17 @@ namespace SkillIssue
 
             if (Debug_General)
             {
-                _gBufferGFX.DrawString("Skill Issue prealpha\n" +
+                gBufferGFX.DrawString("Skill Issue prealpha\n" +
                 $"FPS: {FPS}\n" +
-                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 8));
+                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
 
-                _gBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(_fontColor), new Point(3, Resolution.Height - 16));
+                gBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(_fontColor), new Point(3, Resolution.Height - 16));
             }
 
-            _GFX.DrawImage(_gBuffer, new Rectangle(0, 0, Resolution.Width * RenderScale, Resolution.Height * RenderScale));
+            GFX.DrawImage(gBuffer, new Rectangle(0, 0, Resolution.Width * RenderScale, Resolution.Height * RenderScale));
 
-            _gBuffer.Dispose();
-            _gBufferGFX.Dispose();
+            gBuffer.Dispose();
+            gBufferGFX.Dispose();
 
             FPSstep++;
         }

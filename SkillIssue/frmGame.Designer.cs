@@ -60,8 +60,10 @@ namespace SkillIssue
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameForm_KeyUp);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmGame_MouseDown);
             this.MouseEnter += new System.EventHandler(this.frmGame_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.frmGame_MouseLeave);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.frmGame_MouseUp);
             this.ResumeLayout(false);
 
         }

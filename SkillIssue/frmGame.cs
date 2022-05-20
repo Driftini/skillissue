@@ -22,50 +22,47 @@ namespace SkillIssue
             // Initialize the game
             _SkillIssue = new Game(
                 form: this,
-                resolution: new Size(640, 360),
-                scale: 1
+                resolution: new Size(320, 180),
+                scale: 3
             );
 
             _SkillIssue.Actors.Add(
                 new Player(
-                    position: new Point(300, 200)
+                    position: new Point(250, 70)
                     )
+                );
+
+            _SkillIssue.Actors.Add(
+                new HUD()
                 );
 
             // colliders
 
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(0, 328),
-                    size: new Size(650, 32)
+                    position: new Point(0, 154),
+                    size: new Size(300, 16)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(0, 0),
-                    size: new Size(32, 328)
+                    size: new Size(16, 180)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(608, 0),
-                    size: new Size(32, 328)
+                    position: new Point(304, 0),
+                    size: new Size(16, 180)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(400, 200),
-                    size: new Size(128, 32)
-                    )
-                );
-
-            _SkillIssue.Actors.Add(
-                new Collider(
-                    position: new Point(200, 100),
-                    size: new Size(128, 32)
+                    position: new Point(200, 120),
+                    size: new Size(128, 16)
                     )
                 );
 
@@ -119,7 +116,6 @@ namespace SkillIssue
             if (e.KeyCode == Keys.F1) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DGENERAL, false); }
             if (e.KeyCode == Keys.F2) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DOVERLAYS, false); }
             if (e.KeyCode == Keys.F3) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DACTORS, false); }
-
         }
 
         private void GameForm_Paint(object sender, PaintEventArgs e) {
@@ -140,12 +136,23 @@ namespace SkillIssue
 
         private void frmGame_MouseEnter(object sender, EventArgs e)
         {
-            Cursor.Hide();
+            //Cursor.Hide();
         }
 
         private void frmGame_MouseLeave(object sender, EventArgs e)
         {
             Cursor.Show();
+        }
+
+        private void frmGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.ATTACK, true); }
+            if (e.Button == MouseButtons.Right) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DASH, true); }
+        }
+
+        private void frmGame_MouseUp(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

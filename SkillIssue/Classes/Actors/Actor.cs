@@ -9,6 +9,7 @@ namespace SkillIssue
     {
         public int ID { get; set; }
 
+        private PointF PrecisePosition { get; set; } // for movement calculation only, gets rounded to the next property
         public Point Position { get; set; }
         public Size RenderSize { get; set; }
 
@@ -21,6 +22,7 @@ namespace SkillIssue
         public bool Gravity { get; set; }
         public bool IsSolid { get; set; }
         public bool IsGrounded { get; set; }
+        public bool FacingLeft { get; set; }
 
         public int FrameProgress = 0;
         public int FramePointer = 0;
@@ -97,26 +99,26 @@ namespace SkillIssue
                     var intersection = CurrentHitbox;
                     intersection.Intersect(_collider.CurrentHitbox);
 
-                    if (CurrentHitbox.Right < intersection.Left + 10)
+                    if (CurrentHitbox.Right < intersection.Left + 6)
                     {
                         newPosX -= intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (CurrentHitbox.Left > intersection.Right - 10)
+                    if (CurrentHitbox.Left > intersection.Right - 6)
                     {
                         newPosX += intersection.Width;
                         Acceleration.X = 0;
                     }
 
-                    if (CurrentHitbox.Bottom < intersection.Top + 30)
+                    if (CurrentHitbox.Bottom < intersection.Top + 10)
                     {
-                        newPosY -= intersection.Height + 0;
+                        newPosY -= intersection.Height;
                         Acceleration.Y = 0;
                         IsGrounded = true;
                     }
 
-                    if (CurrentHitbox.Top > intersection.Bottom - 30)
+                    if (CurrentHitbox.Top > intersection.Bottom - 10)
                     {
                         newPosY += intersection.Height;
                         Acceleration.Y = 0;
@@ -137,13 +139,15 @@ namespace SkillIssue
             if (Math.Abs(Acceleration.X) > 1) Acceleration.X /= FrictionX;
             else Acceleration.X = 0;
 
-            if (Math.Abs(Acceleration.Y) > 1) Acceleration.Y /= FrictionY;
+            if (Math.Abs(Acceleration.Y) > 1f) Acceleration.Y /= FrictionY;
             else Acceleration.Y = 0;
             #endregion
 
             #region Gravity
 
-            if (Gravity) Acceleration.Y += 1.2f;
+            if (Gravity)
+                if (Acceleration.Y < 3)
+                    Acceleration.Y += 1.0000000001f;
 
             #endregion
 
@@ -154,10 +158,12 @@ namespace SkillIssue
             Velocity.Y = 0;
 
             // Apply the new position
-            Position = new Point(
-                Position.X + (int)Acceleration.X,
-                Position.Y + (int)Acceleration.Y
+            PrecisePosition = new PointF(
+                Position.X + Acceleration.X,
+                Position.Y + Acceleration.Y
             );
+
+            Position = new Point((int)PrecisePosition.X, (int)PrecisePosition.Y);
         }
 
         public void UpdateAnimations()
@@ -202,7 +208,16 @@ namespace SkillIssue
         public void Draw(Graphics _gfx)
         {
             if (CurrentSprite != null)
-                _gfx.DrawImage(CurrentSprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
+            {
+                Bitmap drawnSprite = new Bitmap(CurrentSprite);
+
+                if (FacingLeft)
+                    drawnSprite.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+                _gfx.DrawImage(drawnSprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
+
+                drawnSprite.Dispose();
+            }
         }
     }
 }

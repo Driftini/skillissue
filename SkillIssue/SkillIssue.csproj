@@ -107,9 +107,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\player.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\colliderOff.png" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +150,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HUD.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_IDLE0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_INCH0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_RUN5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
