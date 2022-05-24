@@ -160,13 +160,13 @@
             // nudActorSize_Y
             // 
             this.nudActorSize_Y.Increment = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
             this.nudActorSize_Y.Location = new System.Drawing.Point(264, 71);
             this.nudActorSize_Y.Maximum = new decimal(new int[] {
-            1000,
+            500,
             0,
             0,
             0});
@@ -179,7 +179,7 @@
             this.nudActorSize_Y.Size = new System.Drawing.Size(42, 20);
             this.nudActorSize_Y.TabIndex = 20;
             this.nudActorSize_Y.Value = new decimal(new int[] {
-            32,
+            16,
             0,
             0,
             0});
@@ -187,13 +187,13 @@
             // nudActorSize_X
             // 
             this.nudActorSize_X.Increment = new decimal(new int[] {
-            10,
+            8,
             0,
             0,
             0});
             this.nudActorSize_X.Location = new System.Drawing.Point(197, 71);
             this.nudActorSize_X.Maximum = new decimal(new int[] {
-            1000,
+            500,
             0,
             0,
             0});
@@ -206,7 +206,7 @@
             this.nudActorSize_X.Size = new System.Drawing.Size(42, 20);
             this.nudActorSize_X.TabIndex = 19;
             this.nudActorSize_X.Value = new decimal(new int[] {
-            32,
+            16,
             0,
             0,
             0});
@@ -238,20 +238,15 @@
             0});
             this.nudActorPosition_Y.Location = new System.Drawing.Point(264, 45);
             this.nudActorPosition_Y.Maximum = new decimal(new int[] {
-            700,
+            180,
             0,
             0,
             0});
-            this.nudActorPosition_Y.Minimum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            -2147483648});
             this.nudActorPosition_Y.Name = "nudActorPosition_Y";
             this.nudActorPosition_Y.Size = new System.Drawing.Size(42, 20);
             this.nudActorPosition_Y.TabIndex = 16;
             this.nudActorPosition_Y.Value = new decimal(new int[] {
-            240,
+            90,
             0,
             0,
             0});
@@ -265,20 +260,15 @@
             0});
             this.nudActorPosition_X.Location = new System.Drawing.Point(197, 45);
             this.nudActorPosition_X.Maximum = new decimal(new int[] {
-            700,
+            320,
             0,
             0,
             0});
-            this.nudActorPosition_X.Minimum = new decimal(new int[] {
-            700,
-            0,
-            0,
-            -2147483648});
             this.nudActorPosition_X.Name = "nudActorPosition_X";
             this.nudActorPosition_X.Size = new System.Drawing.Size(42, 20);
             this.nudActorPosition_X.TabIndex = 5;
             this.nudActorPosition_X.Value = new decimal(new int[] {
-            320,
+            160,
             0,
             0,
             0});

@@ -146,8 +146,9 @@ namespace SkillIssue
             #region Gravity
 
             if (Gravity)
-                if (Acceleration.Y < 3)
-                    Acceleration.Y += 1.0000000001f;
+                if (Acceleration.Y < 6)
+                    Acceleration.Y += 1.2f;
+                    Math.Pow(Acceleration.Y, 2);
 
             #endregion
 

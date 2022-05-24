@@ -54,7 +54,6 @@ namespace SkillIssue
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmGame";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Skill Issue";
             this.Load += new System.EventHandler(this.GameForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameForm_Paint);

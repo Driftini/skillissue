@@ -14,7 +14,7 @@ namespace SkillIssue
             RenderSize = new Size(16, 16);
             zIndex = eZINDEX.PLAYER;
             Speed = 1.000001f;
-            FrictionX = 1.3f;
+            FrictionX = 1.2f;
             Gravity = true;
             IsSolid = true;
             
@@ -43,6 +43,11 @@ namespace SkillIssue
                 new FrameData(3, new Rectangle(new Point(4, 3), new Size(6, 14)), Properties.Resources.PLAYER_RUN5)
             };
 
+            FrameData[] Frames_Jump =
+            {
+                new FrameData(10, new Rectangle(new Point(4, 3), new Size(6, 14)), Properties.Resources.ANIMTEST_COLL)
+            };
+
             //FrameData[] Frames_Dash =
             //{
             //    new FrameData()
@@ -58,6 +63,10 @@ namespace SkillIssue
 
             States.Add(
                 new ActorState("Run", Frames_Run)
+            );
+
+            States.Add(
+                new ActorState("Jump", Frames_Jump, "Spawn")
             );
 
             #endregion
@@ -96,11 +105,15 @@ namespace SkillIssue
                 running = true;
             }
 
+            if (_input.InputCheck((byte)InputManager.eKEYS.LEFT) && _input.InputCheck((byte)InputManager.eKEYS.RIGHT))
+                running = true;
+
             if (_input.InputCheck((byte)InputManager.eKEYS.UP))
             {
                 if (IsGrounded)
                 {
-                    Velocity.Y -= 5f;
+                    Velocity.Y -= 5.3f;
+                    SetState("Jump");
                 }
             }
 

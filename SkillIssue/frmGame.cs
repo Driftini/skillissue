@@ -40,8 +40,8 @@ namespace SkillIssue
 
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(0, 154),
-                    size: new Size(300, 16)
+                    position: new Point(0, 164),
+                    size: new Size(320, 16)
                     )
                 );
 
@@ -59,24 +59,33 @@ namespace SkillIssue
                     )
                 );
 
+            ////
+
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(200, 120),
+                    position: new Point(100, 90),
+                    size: new Size(128, 16)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(200, 130),
                     size: new Size(128, 16)
                     )
                 );
 
             // z-index testing
 
-            _SkillIssue.Actors.Add(
-                new ZIndexTester(
-                    position: new Point(200, 0),
-                    zindex: Actor.eZINDEX.BACKGROUND,
-                    size: new Size(400, 400),
-                    speed: 1.00000001f,
-                    target: 100
-                    )
-                );
+            //_SkillIssue.Actors.Add(
+            //    new ZIndexTester(
+            //        position: new Point(200, 0),
+            //        zindex: Actor.eZINDEX.BACKGROUND,
+            //        size: new Size(400, 400),
+            //        speed: 1.00000001f,
+            //        target: 100
+            //        )
+            //    );
 
             var rnd = new Random();
 
