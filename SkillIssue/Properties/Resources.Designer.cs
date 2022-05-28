@@ -433,6 +433,106 @@ namespace SkillIssue.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_0 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_1 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_2 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_3 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_4 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_5 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_6 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_7 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_8 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK3_9 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK3_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PLAYER_FALL0 {
             get {
                 object obj = ResourceManager.GetObject("PLAYER_FALL0", resourceCulture);

@@ -5,7 +5,7 @@ using System.Numerics;
 
 namespace SkillIssue
 {
-    abstract partial class Projectile : Actor
+    abstract partial class Particle : Actor
     {
         public int Damage { get; set; }
     }

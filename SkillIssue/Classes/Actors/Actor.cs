@@ -49,6 +49,8 @@ namespace SkillIssue
 
         public eZINDEX zIndex;
 
+        public List<Actor> AllGameActors = new List<Actor>();
+
         public List<Actor> CurrentCollisions = new List<Actor>();
 
         public List<Request> CurrentRequests = new List<Request>();

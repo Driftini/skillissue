@@ -17,6 +17,7 @@ namespace SkillIssue
             "AnimationTester",
             "Player",
             "Collider",
+            "BladeGuy",
             "ZIndexTester"
         };
 
@@ -59,6 +60,11 @@ namespace SkillIssue
                     case "Player":
                         nudActorPosition_X.Enabled = true;
                         nudActorPosition_Y.Enabled = true;
+                        break;
+                    case "BladeGuy":
+                        nudActorPosition_X.Enabled = true;
+                        nudActorPosition_Y.Enabled = true;
+                        nudActorLevel.Enabled = true;
                         break;
                     case "Collider":
                         nudActorPosition_X.Enabled = true;
@@ -131,6 +137,16 @@ namespace SkillIssue
                 default:
                     return Actor.eZINDEX.ENTITY;
             }
+        }
+
+        public int ReturnActorLevel()
+        {
+            return (int)nudActorLevel.Value;
+        }
+
+        public int ReturnLiveEntityHealth()
+        {
+            return (int)nudLiveEntityHealth.Value;
         }
 
         public int ReturnZITesterMoveTarget()

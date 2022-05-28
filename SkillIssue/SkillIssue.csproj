@@ -53,8 +53,9 @@
     <Compile Include="Classes\ActorManager.cs" />
     <Compile Include="Classes\Actors\AnimationTester.cs" />
     <Compile Include="Classes\Actors\HUD.cs" />
+    <Compile Include="Classes\Actors\BladeGuy.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
-    <Compile Include="Classes\Actors\Projectile.cs" />
+    <Compile Include="Classes\Actors\Particle.cs" />
     <Compile Include="Classes\Actors\SlashParticle.cs" />
     <Compile Include="Classes\FrameData.cs" />
     <Compile Include="Classes\Request.cs" />
@@ -274,12 +275,6 @@
     <None Include="Resources\PLAYER_ATK2_4.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PLAYER_ATK2_5.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\PLAYER_ATK2_6.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\PLAYER_FALL0.png" />
   </ItemGroup>
   <ItemGroup>
@@ -287,6 +282,42 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLAYER_JMP1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3_9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

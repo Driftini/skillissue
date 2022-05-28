@@ -85,8 +85,23 @@ namespace SkillIssue
                 new FrameData(1, hbox, Properties.Resources.PLAYER_ATK2_3),
                 new FrameData(1, hbox, Properties.Resources.PLAYER_ATK2_4),
                 new FrameData(3, hbox, Properties.Resources.PLAYER_ATK2_5),
-                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK2_6),
-                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK2_6)
+                new FrameData(6, hbox, Properties.Resources.PLAYER_ATK2_6),
+                new FrameData(1, hbox, Properties.Resources.PLAYER_ATK2_6)
+            };
+
+            FrameData[] Frames_Attack3 =
+            {
+                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK3_0),
+                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK3_1),
+                new FrameData(5, hbox, Properties.Resources.PLAYER_ATK3_2),
+                new FrameData(1, hbox, Properties.Resources.PLAYER_ATK3_3),
+                new FrameData(2, hbox, Properties.Resources.PLAYER_ATK3_4),
+                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK3_5),
+                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK3_6),
+                new FrameData(4, hbox, Properties.Resources.PLAYER_ATK3_7),
+                new FrameData(7, hbox, Properties.Resources.PLAYER_ATK3_8),
+                new FrameData(3, hbox, Properties.Resources.PLAYER_ATK3_9),
+                new FrameData(1, hbox, Properties.Resources.PLAYER_ATK3_9)
             };
 
             States.Add(
@@ -117,6 +132,10 @@ namespace SkillIssue
                 new ActorState("Attack2", Frames_Attack2, "Spawn")
             );
 
+            States.Add(
+                new ActorState("Attack3", Frames_Attack3, "Spawn")
+            );
+
             #endregion
         }
 
@@ -124,6 +143,26 @@ namespace SkillIssue
         private bool AttackAlreadyPressed = false;
 
         private int DashCooldown { get; set; }
+
+        private void SpawnSlash(bool flipY_ = false, bool big_ = false)
+        {
+            if (FacingLeft)
+                CurrentRequests.Add(
+                    new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
+                        position: new Point(Position.X - 9, Position.Y),
+                        left: FacingLeft,
+                        flipY: flipY_,
+                        big: big_
+                )));
+            else
+                CurrentRequests.Add(
+                    new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
+                        position: new Point(Position.X + 9, Position.Y),
+                        left: FacingLeft,
+                        flipY: flipY_,
+                        big: big_
+                )));
+        }
 
         public override void Update()
         {
@@ -137,34 +176,17 @@ namespace SkillIssue
 
             // Slash
 
-            if (GetState() == "Attack1" && FramePointer == 2)
+            switch (GetState())
             {
-                if (FacingLeft)
-                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
-                    position: new Point(Position.X - 9, Position.Y),
-                    left: FacingLeft
-                    )));
-                else
-                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
-                    position: new Point(Position.X + 9, Position.Y),
-                    left: FacingLeft
-                    )));
-            }
-
-            if (GetState() == "Attack2" && FramePointer == 2)
-            {
-                if (FacingLeft)
-                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
-                    position: new Point(Position.X - 9, Position.Y),
-                    left: FacingLeft,
-                    flipY: true
-                    )));
-                else
-                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new SlashParticle(
-                    position: new Point(Position.X + 9, Position.Y),
-                    left: FacingLeft,
-                    flipY: true
-                    )));
+                case "Attack1":
+                    if (FramePointer == 2) SpawnSlash();
+                    break;
+                case "Attack2":
+                    if (FramePointer == 2) SpawnSlash(true);
+                    break;
+                case "Attack3":
+                    if (FramePointer == 3) SpawnSlash(true, true);
+                    break;
             }
 
             UpdateMovement();
@@ -176,7 +198,7 @@ namespace SkillIssue
 
             #region Input
 
-            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Pain" && GetState() != "Death")
+            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death")
             {
                 if (_input.InputCheck((byte)InputManager.eKEYS.LEFT))
                 {
@@ -220,16 +242,23 @@ namespace SkillIssue
                             default:
                                 SetState("Attack1");
                                 if (!IsGrounded)
-                                    Acceleration.Y = -4f;
-
+                                    Acceleration.Y = -2;
                                 break;
                             case "Attack1":
                                 if (FramePointer >= 6)
                                     SetState("Attack2");
-
                                 break;
                             case "Attack2":
-                                // SetState("Attack3");
+                                if (FramePointer >= 6)
+                                {
+                                    if (FacingLeft)
+                                        Velocity.X -= 2;
+                                    else
+                                        Velocity.X += 2;
+                                    SetState("Attack3");
+                                }
+                                break;
+                            case "Attack3":
                                 break;
                         }
                     }
@@ -241,7 +270,7 @@ namespace SkillIssue
 
             #endregion
 
-            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && GetState() != "Jump")
+            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && GetState() != "Jump")
             {
                 if (running)
                 {

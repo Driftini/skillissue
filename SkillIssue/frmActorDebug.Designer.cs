@@ -54,6 +54,10 @@
             this.nudRemoveID = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.btRemoveActor = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.nudLiveEntityHealth = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.nudActorLevel = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSpawnCount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSize_Y)).BeginInit();
@@ -64,6 +68,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRemoveID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLiveEntityHealth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorLevel)).BeginInit();
             this.SuspendLayout();
             // 
             // btAddActor
@@ -78,6 +84,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.nudActorLevel);
+            this.groupBox1.Controls.Add(this.nudLiveEntityHealth);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.nudSpawnCount);
             this.groupBox1.Controls.Add(this.label7);
@@ -276,7 +286,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 150);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 217);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(297, 1);
             this.pictureBox1.TabIndex = 15;
@@ -284,7 +294,7 @@
             // 
             // nudZITesterMoveTarget
             // 
-            this.nudZITesterMoveTarget.Location = new System.Drawing.Point(185, 157);
+            this.nudZITesterMoveTarget.Location = new System.Drawing.Point(185, 224);
             this.nudZITesterMoveTarget.Maximum = new decimal(new int[] {
             200,
             0,
@@ -298,7 +308,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 160);
+            this.label6.Location = new System.Drawing.Point(6, 227);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(133, 13);
             this.label6.TabIndex = 13;
@@ -429,6 +439,58 @@
             this.btRemoveActor.Text = "Remove actor";
             this.btRemoveActor.UseVisualStyleBackColor = true;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(6, 178);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(62, 13);
+            this.label13.TabIndex = 23;
+            this.label13.Text = "Power level";
+            // 
+            // nudLiveEntityHealth
+            // 
+            this.nudLiveEntityHealth.Location = new System.Drawing.Point(185, 150);
+            this.nudLiveEntityHealth.Maximum = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.nudLiveEntityHealth.Name = "nudLiveEntityHealth";
+            this.nudLiveEntityHealth.Size = new System.Drawing.Size(121, 20);
+            this.nudLiveEntityHealth.TabIndex = 26;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(6, 152);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(38, 13);
+            this.label14.TabIndex = 25;
+            this.label14.Text = "Health";
+            // 
+            // nudActorDamage
+            // 
+            this.nudActorLevel.Location = new System.Drawing.Point(185, 176);
+            this.nudActorLevel.Maximum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nudActorLevel.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudActorLevel.Name = "nudActorDamage";
+            this.nudActorLevel.Size = new System.Drawing.Size(121, 20);
+            this.nudActorLevel.TabIndex = 27;
+            this.nudActorLevel.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
             // frmActorDebug
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -456,6 +518,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudZITesterMoveTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudActorSpeed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudRemoveID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLiveEntityHealth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActorLevel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +552,9 @@
         private System.Windows.Forms.NumericUpDown nudRemoveID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btRemoveActor;
+        private System.Windows.Forms.NumericUpDown nudActorLevel;
+        private System.Windows.Forms.NumericUpDown nudLiveEntityHealth;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label13;
     }
 }

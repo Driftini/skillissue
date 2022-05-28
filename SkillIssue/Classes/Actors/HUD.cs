@@ -52,7 +52,7 @@ namespace SkillIssue
         {
             Player player = new Player(Point.Empty);
 
-            foreach (Actor a in CurrentCollisions)
+            foreach (Actor a in AllGameActors)
                 if (a is Player)
                     player = (Player)a;
 

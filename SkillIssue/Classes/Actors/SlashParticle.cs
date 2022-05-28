@@ -5,24 +5,37 @@ using System.Numerics;
 
 namespace SkillIssue
 {
-    class SlashParticle : Projectile
+    class SlashParticle : Particle
     {
-        public SlashParticle(Point position, bool left, bool flipY = false)
+        public SlashParticle(Point position, bool left, bool flipY = false, bool big = false)
         {
-            Position = position;
             FacingLeft = left;
             FlipY = flipY;
 
-            RenderSize = new Size(16, 16);
             zIndex = eZINDEX.PARTICLE;
-            Damage = 20;
+
+            if (big)
+            {
+                position.X -= 8;
+                position.Y -= 4;
+                RenderSize = new Size(32, 24);
+                Damage = 40;
+            }
+            else
+            {
+                RenderSize = new Size(16, 16);
+                Damage = 20;
+            }
+
+            Position = position;
 
             var rect = new Rectangle(Point.Empty, RenderSize);
 
             FrameData[] Frames_Spawn =
             {
                 new FrameData(2, rect, Properties.Resources.SLASH0),
-                new FrameData(2, rect, Properties.Resources.SLASH1),
+                new FrameData(1, rect, Properties.Resources.SLASH1),
+                new FrameData(1, rect, Properties.Resources.SLASH1),
                 new FrameData(3, rect, Properties.Resources.SLASH2),
                 new FrameData(3, rect, Properties.Resources.SLASH3),
                 new FrameData(3, rect, Properties.Resources.SLASH4),
@@ -40,7 +53,7 @@ namespace SkillIssue
         {
             drawnSprite = new Bitmap(CurrentSprite);
 
-            if (FramePointer >= 5)
+            if (FramePointer >= 6)
                 RemoveSelf();
         }
     }

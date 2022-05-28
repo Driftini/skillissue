@@ -78,6 +78,12 @@ namespace SkillIssue
                                     size: actorForm.ReturnActorSize()
                                 ));
                                 break;
+                            case "BladeGuy":
+                                Actors.Add(new BladeGuy(
+                                    position: actorForm.ReturnActorPosition(),
+                                    lvl: actorForm.ReturnActorLevel()
+                                ));
+                                break;
                             case "ZIndexTester":
                                 Actors.Add(new ZIndexTester(
                                     position: actorForm.ReturnActorPosition(),
@@ -125,6 +131,9 @@ namespace SkillIssue
 
             foreach (Actor _actor in Actors.ActorList)
             {
+                // Expose entire actor list
+                _actor.AllGameActors = Actors.ActorList;
+
                 // Input
                 if (_actor is Player)
                 {
@@ -208,7 +217,7 @@ namespace SkillIssue
 
             if (Debug_General)
             {
-                    gBufferGFX.DrawString("Skill Issue prealpha\n" +
+                    gBufferGFX.DrawString("Skill Issue alpha\n" +
                     $"FPS: {FPS}\n" +
                     $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
 
