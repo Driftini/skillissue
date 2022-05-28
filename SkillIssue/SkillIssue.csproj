@@ -54,6 +54,8 @@
     <Compile Include="Classes\Actors\AnimationTester.cs" />
     <Compile Include="Classes\Actors\HUD.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
+    <Compile Include="Classes\Actors\Projectile.cs" />
+    <Compile Include="Classes\Actors\SlashParticle.cs" />
     <Compile Include="Classes\FrameData.cs" />
     <Compile Include="Classes\Request.cs" />
     <Compile Include="frmActorDebug.cs">
@@ -174,6 +176,117 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLAYER_RUN5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLASH1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLASH2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLASH3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLASH4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SLASH5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SBLOD6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BBLOD5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_ATK2_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_FALL0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_JMP0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_JMP1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

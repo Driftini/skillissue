@@ -23,6 +23,7 @@ namespace SkillIssue
         public bool IsSolid { get; set; }
         public bool IsGrounded { get; set; }
         public bool FacingLeft { get; set; }
+        public bool FlipY { get; set; }
 
         public int FrameProgress = 0;
         public int FramePointer = 0;
@@ -146,9 +147,13 @@ namespace SkillIssue
             #region Gravity
 
             if (Gravity)
-                if (Acceleration.Y < 6)
+            {
+                if (Acceleration.Y < 8)
                     Acceleration.Y += 1.2f;
+
+                if (!IsGrounded)
                     Math.Pow(Acceleration.Y, 2);
+            }
 
             #endregion
 
@@ -214,6 +219,9 @@ namespace SkillIssue
 
                 if (FacingLeft)
                     drawnSprite.RotateFlip(RotateFlipType.RotateNoneFlipX);
+
+                if (FlipY)
+                    drawnSprite.RotateFlip(RotateFlipType.RotateNoneFlipY);
 
                 _gfx.DrawImage(drawnSprite, new Rectangle(Position.X, Position.Y, RenderSize.Width, RenderSize.Height));
 

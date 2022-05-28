@@ -173,6 +173,66 @@ namespace SkillIssue.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BBLOD0 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BBLOD1 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BBLOD2 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BBLOD3 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BBLOD4 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BBLOD5 {
+            get {
+                object obj = ResourceManager.GetObject("BBLOD5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap colliderOff {
             get {
                 object obj = ResourceManager.GetObject("colliderOff", resourceCulture);
@@ -213,6 +273,176 @@ namespace SkillIssue.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_0 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_1 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_2 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_3 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_4 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_5 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_6 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_7 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_7", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK1_8 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK1_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_0 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_1 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_2 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_3 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_4 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_5 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_ATK2_6 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_ATK2_6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_FALL0 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_FALL0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PLAYER_IDLE0 {
             get {
                 object obj = ResourceManager.GetObject("PLAYER_IDLE0", resourceCulture);
@@ -226,6 +456,26 @@ namespace SkillIssue.Properties {
         internal static System.Drawing.Bitmap PLAYER_INCH0 {
             get {
                 object obj = ResourceManager.GetObject("PLAYER_INCH0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_JMP0 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_JMP0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLAYER_JMP1 {
+            get {
+                object obj = ResourceManager.GetObject("PLAYER_JMP1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +536,126 @@ namespace SkillIssue.Properties {
         internal static System.Drawing.Bitmap PLAYER_RUN5 {
             get {
                 object obj = ResourceManager.GetObject("PLAYER_RUN5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD0 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD1 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD2 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD3 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD4 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD4", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD5 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SBLOD6 {
+            get {
+                object obj = ResourceManager.GetObject("SBLOD6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SLASH0 {
+            get {
+                object obj = ResourceManager.GetObject("SLASH0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SLASH1 {
+            get {
+                object obj = ResourceManager.GetObject("SLASH1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SLASH2 {
+            get {
+                object obj = ResourceManager.GetObject("SLASH2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SLASH3 {
+            get {
+                object obj = ResourceManager.GetObject("SLASH3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SLASH4 {
+            get {
+                object obj = ResourceManager.GetObject("SLASH4", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

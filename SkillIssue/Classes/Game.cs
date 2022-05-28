@@ -208,11 +208,11 @@ namespace SkillIssue
 
             if (Debug_General)
             {
-                gBufferGFX.DrawString("Skill Issue prealpha\n" +
-                $"FPS: {FPS}\n" +
-                $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
+                    gBufferGFX.DrawString("Skill Issue prealpha\n" +
+                    $"FPS: {FPS}\n" +
+                    $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
 
-                gBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(_fontColor), new Point(3, Resolution.Height - 16));
+                    gBufferGFX.DrawString("F1 Main debug panel | F2 Actor overlays | F3 Actor de/spawner", new Font("Tahoma", 7, FontStyle.Bold), new SolidBrush(_fontColor), new Point(3, Resolution.Height - 16));
             }
 
             GFX.DrawImage(gBuffer, new Rectangle(0, 0, Resolution.Width * RenderScale, Resolution.Height * RenderScale));

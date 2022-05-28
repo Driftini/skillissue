@@ -145,7 +145,7 @@ namespace SkillIssue
 
         private void frmGame_MouseEnter(object sender, EventArgs e)
         {
-            //Cursor.Hide();
+            Cursor.Hide();
         }
 
         private void frmGame_MouseLeave(object sender, EventArgs e)
@@ -161,7 +161,8 @@ namespace SkillIssue
 
         private void frmGame_MouseUp(object sender, MouseEventArgs e)
         {
-
+            if (e.Button == MouseButtons.Left) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.ATTACK, false); }
+            if (e.Button == MouseButtons.Right) { _SkillIssue.Input.InputSet((byte)InputManager.eKEYS.DASH, false); }
         }
     }
 }
