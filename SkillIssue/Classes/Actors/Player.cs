@@ -62,6 +62,17 @@ namespace SkillIssue
                 new FrameData(17, hbox, Properties.Resources.PLAYER_FALL0)
             };
 
+            FrameData[] Frames_Death =
+            {
+                new FrameData(2, hbox, Properties.Resources.PLAYER_DMG0),
+            };
+
+            FrameData[] Frames_DeathFlash =
+            {
+                new FrameData(7, hbox, Properties.Resources.PLAYER_DMG0),
+                new FrameData(7, hbox, Properties.Resources.PLAYER_FALL0)
+            };
+
             FrameData[] Frames_Dash =
             {
                 new FrameData(10, hbox, Properties.Resources.PLAYER_DASH0)
@@ -135,6 +146,14 @@ namespace SkillIssue
             );
 
             States.Add(
+                new ActorState("Death", Frames_Death, "DeathFlash")
+            );
+
+            States.Add(
+                new ActorState("DeathFlash", Frames_DeathFlash)
+            );
+
+            States.Add(
                 new ActorState("Dash", Frames_Dash, "Fall")
             );
 
@@ -162,6 +181,10 @@ namespace SkillIssue
 
         public int Score { get; set; }
         public float Multiplier = 1.0f;
+        public float MaxMultiplier = 0;
+        public int Kills = 0;
+        public DateTime SpawnTime = DateTime.Now;
+        public TimeSpan LifeSpan { get; set; }
 
         private void SpawnSlash(bool flipY_ = false, bool big_ = false)
         {
@@ -196,13 +219,18 @@ namespace SkillIssue
                     var bg = (BladeGuy)a;
 
                     if (a.GetState() == "Pain" && bg.FramePointer == 0)
+                    {
                         Multiplier += .1f;
+                        if (Multiplier > MaxMultiplier)
+                            MaxMultiplier = Multiplier;
+                    }
 
                     if (a.GetState() == "Death" && bg.FramePointer == 0)
                     {
                         Health += 5;
                         DashCooldown += 30;
                         AwardScore(50 + (bg.Level * 5));
+                        Kills++;
                     }
                 }
             }
@@ -274,14 +302,15 @@ namespace SkillIssue
                         big: bigPuff
                         )));
                     break;
-                case "Pain":
-                    Multiplier = 1;
+                case "Death":
+                    LifeSpan = SpawnTime - DateTime.Now;
+                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new DeathSplash()));
                     break;
             }
 
             // Damage check
 
-            if (GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && InvulnTime <= 0)
+            if (GetState() != "Pain" && GetState() != "Death" && GetState() != "DeathFlash" && GetState() != "Dash" && InvulnTime <= 0)
             {
                 foreach (Actor a in CurrentCollisions)
                     if (a is BladeGuy && a.GetState() == "Attack" && a.FramePointer >= 2 && a.FramePointer <= 9)
@@ -290,10 +319,11 @@ namespace SkillIssue
 
                         Health -= 10;
                         for (int i = 1; i <= bg.Level; i++)
-                            Health -= 2;
+                            Health -= 4;
 
                         SetState("Pain");
 
+                        Multiplier = 1.0f;
                         InvulnTime = 21;
                         Velocity.Y = -5;
 
@@ -303,6 +333,9 @@ namespace SkillIssue
                             Velocity.X -= 5;
                     }
             }
+
+            if (GetState() != "Death" && GetState() != "DeathFlash" && Health <= 0)
+                SetState("Death");
 
             UpdateMovement();
         }
@@ -320,7 +353,7 @@ namespace SkillIssue
 
             #region Input
 
-            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death")
+            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death" && GetState() != "DeathFlash")
             {
                 if (_input.InputCheck((byte)InputManager.eKEYS.LEFT))
                 {
@@ -352,7 +385,7 @@ namespace SkillIssue
                     JumpAlreadyPressed = false;
             }
 
-            if (GetState() != "Pain" && GetState() != "Death")
+            if (GetState() != "Pain" && GetState() != "Death" && GetState() != "DeathFlash")
             {
                 if (_input.InputCheck((byte)InputManager.eKEYS.ATTACK))
                 {
@@ -390,7 +423,7 @@ namespace SkillIssue
                     AttackAlreadyPressed = false;
             }
 
-            if (GetState() != "Death" && _input.InputCheck((byte)InputManager.eKEYS.DASH))
+            if (GetState() != "Death" && GetState() != "DeathFlash" && _input.InputCheck((byte)InputManager.eKEYS.DASH))
             {
                 if (DashCooldown >= 100)
                 {
@@ -415,7 +448,7 @@ namespace SkillIssue
 
             #endregion
 
-            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && GetState() != "Jump")
+            if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death" && GetState() != "DeathFlash" && GetState() != "Dash" && GetState() != "Jump")
             {
                 if (running)
                 {

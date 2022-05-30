@@ -533,6 +533,16 @@ namespace SkillIssue.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FLOOR {
+            get {
+                object obj = ResourceManager.GetObject("FLOOR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap floortile {
             get {
                 object obj = ResourceManager.GetObject("floortile", resourceCulture);
@@ -596,6 +606,16 @@ namespace SkillIssue.Properties {
         internal static System.Drawing.Bitmap HUD_HEALTH_RED {
             get {
                 object obj = ResourceManager.GetObject("HUD_HEALTH_RED", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PLATFORM {
+            get {
+                object obj = ResourceManager.GetObject("PLATFORM", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1136,6 +1156,16 @@ namespace SkillIssue.Properties {
         internal static System.Drawing.Bitmap TUTORIAL_MRIGHT {
             get {
                 object obj = ResourceManager.GetObject("TUTORIAL_MRIGHT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WALL {
+            get {
+                object obj = ResourceManager.GetObject("WALL", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

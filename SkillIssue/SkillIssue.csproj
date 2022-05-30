@@ -52,8 +52,10 @@
   <ItemGroup>
     <Compile Include="Classes\ActorManager.cs" />
     <Compile Include="Classes\Actors\AnimationTester.cs" />
+    <Compile Include="Classes\Actors\GlowingBackground.cs" />
     <Compile Include="Classes\Actors\EnemySpawner.cs" />
     <Compile Include="Classes\Actors\EnemyTurner.cs" />
+    <Compile Include="Classes\Actors\DeathSplash.cs" />
     <Compile Include="Classes\Actors\TutorialSplash.cs" />
     <Compile Include="Classes\Actors\HUD.cs" />
     <Compile Include="Classes\Actors\BladeGuy.cs" />
@@ -439,6 +441,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TUTORIAL_MRIGHT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLATFORM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WALL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FLOOR.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

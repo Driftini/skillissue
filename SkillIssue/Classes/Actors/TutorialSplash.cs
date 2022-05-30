@@ -61,7 +61,7 @@ namespace SkillIssue
                 "possono accelerare il processo e ripristinare leggermente\n" +
                 "anche la salute.", new Font("Verdana", 6.4f), new SolidBrush(Color.White), new Point(8, 74));
 
-            TutorialSplashgBufferGFX.DrawString("Skill Issue BETA 1", new Font("Verdana", 6.4f), new SolidBrush(Color.Gray), new Point(230, 163));
+            TutorialSplashgBufferGFX.DrawString("Skill Issue RC1", new Font("Verdana", 6.4f), new SolidBrush(Color.Gray), new Point(230, 163));
 
             CurrentSprite = TutorialSplashgBuffer;
         }

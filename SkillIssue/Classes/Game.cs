@@ -75,7 +75,8 @@ namespace SkillIssue
                             case "Collider":
                                 Actors.Add(new Collider(
                                     position: actorForm.ReturnActorPosition(),
-                                    size: actorForm.ReturnActorSize()
+                                    size: actorForm.ReturnActorSize(),
+                                    sprite: Properties.Resources.PLATFORM
                                 ));
                                 break;
                             case "BladeGuy":
@@ -174,6 +175,8 @@ namespace SkillIssue
             }
         }
 
+
+
         public void Render(Graphics GFX)
         {
             Bitmap gBuffer = new Bitmap(Resolution.Width, Resolution.Height);
@@ -217,7 +220,7 @@ namespace SkillIssue
 
             if (Debug_General)
             {
-                    gBufferGFX.DrawString("Skill Issue beta\n" +
+                    gBufferGFX.DrawString("Skill Issue rc1\n" +
                     $"FPS: {FPS}\n" +
                     $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
 

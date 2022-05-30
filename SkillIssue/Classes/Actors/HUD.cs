@@ -75,8 +75,8 @@ namespace SkillIssue
             HUDgBufferGFX.DrawString($"{player.Score}", new Font("Verdana", 6.4f), new SolidBrush(Color.Black), new Point(1, 14));
             HUDgBufferGFX.DrawString($"{player.Score}", new Font("Verdana", 6.4f), new SolidBrush(Color.White), new Point(1, 13));
 
-            HUDgBufferGFX.DrawString($"x{player.Multiplier}", new Font("Verdana", 7f, FontStyle.Bold), new SolidBrush(Color.Black), new Point(1, 21));
-            HUDgBufferGFX.DrawString($"x{player.Multiplier}", new Font("Verdana", 7f, FontStyle.Bold), new SolidBrush(Color.White), new Point(1, 20));
+            HUDgBufferGFX.DrawString($"x{Math.Round(player.Multiplier, 1)}", new Font("Verdana", 7f, FontStyle.Bold), new SolidBrush(Color.Black), new Point(1, 21));
+            HUDgBufferGFX.DrawString($"x{Math.Round(player.Multiplier, 1)}", new Font("Verdana", 7f, FontStyle.Bold), new SolidBrush(Color.White), new Point(1, 20));
 
             CurrentSprite = HUDgBuffer;
         }

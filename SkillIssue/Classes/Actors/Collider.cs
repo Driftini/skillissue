@@ -7,10 +7,11 @@ namespace SkillIssue
 {
     class Collider : Actor
     {
-        public Collider(Point position, Size size)
+        public Collider(Point position, Size size, Bitmap sprite, bool flip = false)
         {
             Position = position;
             RenderSize = size;
+            FacingLeft = flip;
 
             zIndex = eZINDEX.SOLID;
 
@@ -18,7 +19,7 @@ namespace SkillIssue
 
             FrameData[] Frames_Spawn =
             {
-                new FrameData(1, new Rectangle(Point.Empty, RenderSize), Properties.Resources.floortile)
+                new FrameData(1, new Rectangle(Point.Empty, RenderSize), sprite)
             };
 
             States.Add(

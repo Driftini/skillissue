@@ -27,6 +27,10 @@ namespace SkillIssue
             );
 
             _SkillIssue.Actors.Add(
+                new GlowingBackground()
+                );
+
+            _SkillIssue.Actors.Add(
                 new Player(
                     position: new Point(250, 70)
                     )
@@ -45,21 +49,24 @@ namespace SkillIssue
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(100, 90),
-                    size: new Size(128, 16)
+                    size: new Size(128, 16),
+                    sprite: Properties.Resources.PLATFORM
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(200, 130),
-                    size: new Size(128, 16)
+                    size: new Size(128, 16),
+                    sprite: Properties.Resources.PLATFORM
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(0, 50),
-                    size: new Size(128, 16)
+                    size: new Size(128, 16),
+                    sprite: Properties.Resources.PLATFORM
                     )
                 );
 
@@ -67,29 +74,34 @@ namespace SkillIssue
 
             _SkillIssue.Actors.Add(
                 new Collider(
-                    position: new Point(0, 164),
-                    size: new Size(320, 32)
-                    )
-                );
-
-            _SkillIssue.Actors.Add(
-                new Collider(
                     position: new Point(0, -16),
-                    size: new Size(320, 16)
+                    size: new Size(320, 16),
+                    sprite: Properties.Resources.PLATFORM
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(0, 0),
-                    size: new Size(16, 180)
+                    size: new Size(16, 180),
+                    sprite: Properties.Resources.WALL
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(304, 0),
-                    size: new Size(16, 180)
+                    size: new Size(16, 180),
+                    sprite: Properties.Resources.WALL,
+                    flip: true
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(0, 164),
+                    size: new Size(320, 32),
+                    sprite: Properties.Resources.FLOOR
                     )
                 );
 
