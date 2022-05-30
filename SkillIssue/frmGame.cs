@@ -36,11 +36,41 @@ namespace SkillIssue
                 new HUD()
                 );
 
-            // colliders
+            // platforms
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(100, 90),
+                    size: new Size(128, 16)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(200, 130),
+                    size: new Size(128, 16)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(0, 50),
+                    size: new Size(128, 16)
+                    )
+                );
+
+            // borders
 
             _SkillIssue.Actors.Add(
                 new Collider(
                     position: new Point(0, 164),
+                    size: new Size(320, 32)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new Collider(
+                    position: new Point(0, -16),
                     size: new Size(320, 16)
                     )
                 );
@@ -59,48 +89,94 @@ namespace SkillIssue
                     )
                 );
 
-            ////
+            // turners
 
             _SkillIssue.Actors.Add(
-                new Collider(
-                    position: new Point(100, 90),
-                    size: new Size(128, 16)
+                new EnemyTurner(
+                    position: new Point(17, 146)
                     )
                 );
 
             _SkillIssue.Actors.Add(
-                new Collider(
-                    position: new Point(200, 130),
-                    size: new Size(128, 16)
+                new EnemyTurner(
+                    position: new Point(302, 146)
                     )
                 );
 
-            // z-index testing
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(99, 74)
+                    )
+                );
 
-            //_SkillIssue.Actors.Add(
-            //    new ZIndexTester(
-            //        position: new Point(200, 0),
-            //        zindex: Actor.eZINDEX.BACKGROUND,
-            //        size: new Size(400, 400),
-            //        speed: 1.00000001f,
-            //        target: 100
-            //        )
-            //    );
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(227, 74)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(199, 114)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(300, 114)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(17, 34)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemyTurner(
+                    position: new Point(125, 34)
+                    )
+                );
+
+            // enemy spawners
 
             var rnd = new Random();
 
-            for (int i = 0; i <= -1; i++)
-            {
-                _SkillIssue.Actors.Add(
-                    new ZIndexTester(
-                        position: new Point(rnd.Next(-200, 700), rnd.Next(-100, 400)),
-                        zindex: Actor.eZINDEX.PARTICLE,
-                        size: new Size(rnd.Next(20, 500), rnd.Next(20, 500)),
-                        speed: (rnd.Next(100, 500) / 100),
-                        target: rnd.Next(2, 50)
-                        )
-                    );
-            }
+            _SkillIssue.Actors.Add(
+                new EnemySpawner(
+                    position: new Point(20, 32),
+                    tillnext: rnd.Next(3, 7)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemySpawner(
+                    position: new Point(278, 102),
+                    tillnext: rnd.Next(3, 7)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemySpawner(
+                    position: new Point(152, 62),
+                    tillnext: rnd.Next(3, 7)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemySpawner(
+                    position: new Point(264, 145),
+                    tillnext: rnd.Next(3, 7)
+                    )
+                );
+
+            _SkillIssue.Actors.Add(
+                new EnemySpawner(
+                    position: new Point(48, 145),
+                    tillnext: rnd.Next(3, 7)
+                    )
+                );
         }
 
         private void GameForm_KeyDown(object sender, KeyEventArgs e)

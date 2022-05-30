@@ -47,12 +47,8 @@ namespace SkillIssue
                 );
         }
 
-        private Bitmap drawnSprite;
-
         public override void Update()
         {
-            drawnSprite = new Bitmap(CurrentSprite);
-
             if (FramePointer >= 6)
                 RemoveSelf();
         }

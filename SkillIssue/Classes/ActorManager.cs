@@ -34,6 +34,8 @@ namespace SkillIssue
 
             if (!(toRemove is null))
             {
+                toRemove.CurrentSprite.Dispose();
+
                 ActorList.Remove(toRemove);
                 UsedIDs.Remove(id);
             }

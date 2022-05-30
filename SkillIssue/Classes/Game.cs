@@ -35,7 +35,7 @@ namespace SkillIssue
         public int FPS { get; set; }
         public int FPSstep { get; set; }
 
-        private bool Debug_General = true;
+        private bool Debug_General = false;
         private bool Debug_Overlays = false;
         private bool Debug_ActorForm = false;
 

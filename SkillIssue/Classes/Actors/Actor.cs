@@ -16,6 +16,7 @@ namespace SkillIssue
         public float Speed { get; set; }
         public float FrictionX = 1;
         public float FrictionY = 1;
+        public float GravityForce = 1.2f;
         public Vector2 Velocity;
         public Vector2 Acceleration;
 
@@ -151,7 +152,7 @@ namespace SkillIssue
             if (Gravity)
             {
                 if (Acceleration.Y < 8)
-                    Acceleration.Y += 1.2f;
+                    Acceleration.Y += GravityForce;
 
                 if (!IsGrounded)
                     Math.Pow(Acceleration.Y, 2);

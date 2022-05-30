@@ -56,10 +56,16 @@ namespace SkillIssue
                 new FrameData(1, hbox, Properties.Resources.PLAYER_FALL0)
             };
 
-            //FrameData[] Frames_Dash =
-            //{
-            //    new FrameData()
-            //};
+            FrameData[] Frames_Pain =
+            {
+                new FrameData(3, hbox, Properties.Resources.PLAYER_DMG0),
+                new FrameData(17, hbox, Properties.Resources.PLAYER_FALL0)
+            };
+
+            FrameData[] Frames_Dash =
+            {
+                new FrameData(10, hbox, Properties.Resources.PLAYER_DASH0)
+            };
 
             FrameData[] Frames_Attack1 =
             {
@@ -125,6 +131,14 @@ namespace SkillIssue
             );
 
             States.Add(
+                new ActorState("Pain", Frames_Pain, "Spawn")
+            );
+
+            States.Add(
+                new ActorState("Dash", Frames_Dash, "Fall")
+            );
+
+            States.Add(
                 new ActorState("Attack1", Frames_Attack1, "Spawn")
             );
 
@@ -142,7 +156,12 @@ namespace SkillIssue
         private bool JumpAlreadyPressed = false;
         private bool AttackAlreadyPressed = false;
 
-        private int DashCooldown { get; set; }
+        private int InvulnTime = 0;
+        public int DashCooldown { get; set; }
+        private Vector2 DashVel = new Vector2();
+
+        public int Score { get; set; }
+        public float Multiplier = 1.0f;
 
         private void SpawnSlash(bool flipY_ = false, bool big_ = false)
         {
@@ -166,15 +185,48 @@ namespace SkillIssue
 
         public override void Update()
         {
+            Gravity = true;
+
+            // Check for dead or hit enemies
+            
+            foreach (Actor a in AllGameActors)
+            {
+                if (a is BladeGuy)
+                {
+                    var bg = (BladeGuy)a;
+
+                    if (a.GetState() == "Pain" && bg.FrameProgress == 0)
+                        Multiplier += .1f;
+
+                    if (a.GetState() == "Death" && bg.FrameProgress == 1)
+                    {
+                        DashCooldown += 30;
+                        AwardScore(50 + (bg.Level * 5));
+                    }
+                }
+            }
+
+            // Dash cooldown
+
+            if (DashCooldown < 100)
+                DashCooldown += 1;
+            else
+                DashCooldown = 100;
+
+            // Invulnerable time
+
+            if (DashCooldown > 0)
+                InvulnTime -= 1;
+            else
+                DashCooldown = 0;
+
             // Speed caps
 
-            if (GetState() != "Dash" && Acceleration.X > 1.5f)
+            if (GetState() != "Dash" && GetState() != "Pain" && Acceleration.X > 1.5f)
                 Acceleration = new Vector2(1.5f, Acceleration.Y);
 
-            if (GetState() != "Dash" && Acceleration.X < -1.5f)
+            if (GetState() != "Dash" && GetState() != "Pain" && Acceleration.X < -1.5f)
                 Acceleration = new Vector2(-1.5f, Acceleration.Y);
-
-            // Slash
 
             switch (GetState())
             {
@@ -187,9 +239,73 @@ namespace SkillIssue
                 case "Attack3":
                     if (FramePointer == 3) SpawnSlash(true, true);
                     break;
+                case "Dash":
+                    Gravity = false;
+                    DashCooldown = 0;
+                    Acceleration = Vector2.Zero;
+
+                    Velocity.X = DashVel.X;
+                    Velocity.Y = DashVel.Y;
+
+                    var rnd = new Random();
+                    bool flipPuffX = false;
+                    bool flipPuffY = false;
+                    bool bigPuff = false;
+
+                    if (rnd.Next(0, 1) == 1)
+                        flipPuffX = true;
+
+                    if (rnd.Next(0, 1) == 1)
+                        flipPuffY = true;
+
+                    if (FrameProgress == 0)
+                        bigPuff = true;
+
+                    CurrentRequests.Add(new Request(Request.eREQUESTTYPE.SPAWN, new DashPuff(
+                        position: new Point(Position.X + 4, Position.Y + 6),
+                        left: flipPuffX,
+                        flipY: flipPuffY,
+                        big: bigPuff
+                        )));
+                    break;
+                case "Pain":
+                    Multiplier = 1;
+                    break;
+            }
+
+            // Damage check
+
+            if (GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && InvulnTime <= 0)
+            {
+                foreach (Actor a in CurrentCollisions)
+                    if (a is BladeGuy && a.GetState() == "Attack" && a.FramePointer >= 2 && a.FramePointer <= 9)
+                    {
+                        var bg = (BladeGuy)a;
+
+                        Health -= 15;
+                        for (int i = 1; i <= bg.Level; i++)
+                            Health -= 5;
+
+                        SetState("Pain");
+
+                        InvulnTime = 21;
+                        Velocity.Y = -5;
+
+                        if (FacingLeft)
+                            Velocity.X += 7;
+                        else
+                            Velocity.X -= 5;
+                    }
             }
 
             UpdateMovement();
+        }
+
+        private void AwardScore(int amount)
+        {
+            var temp = Math.Floor(amount * Multiplier);
+
+            Score += (int)temp;
         }
 
         public void InputUpdate(InputManager _input)
@@ -268,6 +384,29 @@ namespace SkillIssue
                     AttackAlreadyPressed = false;
             }
 
+            if (GetState() != "Death" && _input.InputCheck((byte)InputManager.eKEYS.DASH))
+            {
+                if (DashCooldown >= 100)
+                {
+                    DashVel = Vector2.Zero;
+
+                    if (_input.InputCheck((byte)InputManager.eKEYS.LEFT))
+                        DashVel.X = -5;
+
+                    if (_input.InputCheck((byte)InputManager.eKEYS.RIGHT))
+                        DashVel.X = 5;
+
+                    if (_input.InputCheck((byte)InputManager.eKEYS.UP))
+                        DashVel.Y = -5;
+
+                    if (_input.InputCheck((byte)InputManager.eKEYS.DOWN))
+                        DashVel.Y = 5;
+
+                    Vector2.Normalize(DashVel);
+                    SetState("Dash");
+                }
+            }
+
             #endregion
 
             if (GetState() != "Attack1" && GetState() != "Attack2" && GetState() != "Attack3" && GetState() != "Pain" && GetState() != "Death" && GetState() != "Dash" && GetState() != "Jump")
@@ -285,6 +424,8 @@ namespace SkillIssue
 
                 if (GetState() == "Fall" || GetState() == "Jump" && IsGrounded)
                     SetState("Spawn");
+                else if (!IsGrounded)
+                    SetState("Fall");
             }
         }
     }

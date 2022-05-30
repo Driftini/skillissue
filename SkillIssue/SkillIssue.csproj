@@ -52,10 +52,13 @@
   <ItemGroup>
     <Compile Include="Classes\ActorManager.cs" />
     <Compile Include="Classes\Actors\AnimationTester.cs" />
+    <Compile Include="Classes\Actors\EnemySpawner.cs" />
+    <Compile Include="Classes\Actors\EnemyTurner.cs" />
     <Compile Include="Classes\Actors\HUD.cs" />
     <Compile Include="Classes\Actors\BladeGuy.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
     <Compile Include="Classes\Actors\Particle.cs" />
+    <Compile Include="Classes\Actors\DashPuff.cs" />
     <Compile Include="Classes\Actors\SlashParticle.cs" />
     <Compile Include="Classes\FrameData.cs" />
     <Compile Include="Classes\Request.cs" />
@@ -318,6 +321,117 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLAYER_ATK3_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_DASH_FULL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_DASH_READY.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_HEALTH_DANGER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_HEALTH_RED.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_BASE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HUD_HEALTH_GREEN.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_DASH0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DASHPUFF8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TRANSPARENT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_ATK9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_DMG0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_DMG1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_IDLE1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BLGUY_RUN5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PLAYER_DMG0.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

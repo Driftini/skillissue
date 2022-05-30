@@ -169,17 +169,116 @@
   <data name="BBLOD5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BBLOD5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BLGUY_ATK0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_ATK9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_ATK9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_DMG0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_DMG0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_DMG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_DMG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_IDLE1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_IDLE1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BLGUY_RUN5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BLGUY_RUN5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="colliderOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\colliderOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="colliderOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\colliderOn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="DASHPUFF0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DASHPUFF8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DASHPUFF8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="floortile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\floortile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HUD" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HUD.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="HUD_BASE" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_BASE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD_DASH_FULL" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_DASH_FULL.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD_DASH_READY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_DASH_READY.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD_HEALTH_DANGER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_HEALTH_DANGER.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD_HEALTH_GREEN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_HEALTH_GREEN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HUD_HEALTH_RED" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HUD_HEALTH_RED.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PLAYER_ATK1_0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PLAYER_ATK0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,6 +358,12 @@
   <data name="PLAYER_ATK3_9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PLAYER_ATK3_9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PLAYER_DASH0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PLAYER_DASH0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PLAYER_DMG0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PLAYER_DMG0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="PLAYER_FALL0" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\PLAYER_FALL0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -327,5 +432,8 @@
   </data>
   <data name="SLASH4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SLASH5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TRANSPARENT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TRANSPARENT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
