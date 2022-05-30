@@ -1119,5 +1119,25 @@ namespace SkillIssue.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TUTORIAL_MLEFT {
+            get {
+                object obj = ResourceManager.GetObject("TUTORIAL_MLEFT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TUTORIAL_MRIGHT {
+            get {
+                object obj = ResourceManager.GetObject("TUTORIAL_MRIGHT", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

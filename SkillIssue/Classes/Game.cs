@@ -217,7 +217,7 @@ namespace SkillIssue
 
             if (Debug_General)
             {
-                    gBufferGFX.DrawString("Skill Issue alpha\n" +
+                    gBufferGFX.DrawString("Skill Issue beta\n" +
                     $"FPS: {FPS}\n" +
                     $"Actors loaded: {Actors.ActorList.Count}", new Font("Verdana", 6.4f), new SolidBrush(_fontColor), new Point(5, 38));
 

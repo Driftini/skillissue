@@ -54,6 +54,7 @@
     <Compile Include="Classes\Actors\AnimationTester.cs" />
     <Compile Include="Classes\Actors\EnemySpawner.cs" />
     <Compile Include="Classes\Actors\EnemyTurner.cs" />
+    <Compile Include="Classes\Actors\TutorialSplash.cs" />
     <Compile Include="Classes\Actors\HUD.cs" />
     <Compile Include="Classes\Actors\BladeGuy.cs" />
     <Compile Include="Classes\Actors\NullActor.cs" />
@@ -432,6 +433,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLAYER_DMG0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TUTORIAL_MLEFT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TUTORIAL_MRIGHT.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

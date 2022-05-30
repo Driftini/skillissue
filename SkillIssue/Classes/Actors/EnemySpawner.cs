@@ -49,16 +49,25 @@ namespace SkillIssue
 
         public override void Update()
         {
-            Random rnd = new Random();
+            var enemyCount = 0;
 
-            if (FrameProgress == 0)
+            foreach (Actor a in AllGameActors)
+                if (a is BladeGuy)
+                    enemyCount++;
+
+            if (enemyCount <= 3)
             {
-                UntilNextSpawn--;
+                Random rnd = new Random();
 
-                if (UntilNextSpawn <= 0)
+                if (FrameProgress == 0)
                 {
-                    UntilNextSpawn = rnd.Next(5, 10);
-                    SpawnEnemy();
+                    UntilNextSpawn--;
+
+                    if (UntilNextSpawn <= 0)
+                    {
+                        UntilNextSpawn = rnd.Next(5, 10);
+                        SpawnEnemy();
+                    }
                 }
             }
         }

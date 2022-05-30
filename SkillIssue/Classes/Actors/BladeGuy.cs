@@ -12,10 +12,10 @@ namespace SkillIssue
             Position = position;
             Level = lvl;
 
-            Health = 50;
+            Health = 40;
 
             for (int i = 1; i <= lvl; i++)
-                Health += 15;
+                Health += 5;
 
             RenderSize = new Size(16, 16);
             zIndex = eZINDEX.ENTITY;
@@ -59,14 +59,19 @@ namespace SkillIssue
 
             FrameData[] Frames_Pain =
             {
-                new FrameData(2, hbox, Properties.Resources.BLGUY_DMG0),
+                new FrameData(1, hbox, Properties.Resources.BLGUY_DMG0),
+                new FrameData(1, hbox, Properties.Resources.BLGUY_DMG0),
                 new FrameData(8, hbox, Properties.Resources.BLGUY_DMG1)
             };
 
             FrameData[] Frames_Death =
             {
-                new FrameData(20, hbox, Properties.Resources.ANIMTEST_COLL),
-                new FrameData(1, hbox, Properties.Resources.ANIMTEST_COLL)
+                new FrameData(1, hbox, Properties.Resources.BLGUY_DMG0),
+                new FrameData(4, hbox, Properties.Resources.BLGUY_DMG0),
+                new FrameData(2, hbox, Properties.Resources.BBLOD2),
+                new FrameData(2, hbox, Properties.Resources.BBLOD3),
+                new FrameData(3, hbox, Properties.Resources.BBLOD4),
+                new FrameData(4, hbox, Properties.Resources.BBLOD5)
             };
 
             States.Add(
@@ -188,7 +193,17 @@ namespace SkillIssue
                     ReactionTimer = 0;
                     break;
                 case "Death":
-                    if (FramePointer >= 1)
+
+                    if (FramePointer == 2)
+                    {
+                        Gravity = false;
+                        Velocity = Vector2.Zero;
+                        Acceleration = Vector2.Zero;
+                        Position = new Point(Position.X - 2, Position.Y - 2);
+                        RenderSize = new Size(24, 24);
+                    }
+
+                    if (FramePointer >= 5)
                         RemoveSelf();
                     break;
             }

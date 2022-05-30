@@ -195,11 +195,12 @@ namespace SkillIssue
                 {
                     var bg = (BladeGuy)a;
 
-                    if (a.GetState() == "Pain" && bg.FrameProgress == 0)
+                    if (a.GetState() == "Pain" && bg.FramePointer == 0)
                         Multiplier += .1f;
 
-                    if (a.GetState() == "Death" && bg.FrameProgress == 1)
+                    if (a.GetState() == "Death" && bg.FramePointer == 0)
                     {
+                        Health += 5;
                         DashCooldown += 30;
                         AwardScore(50 + (bg.Level * 5));
                     }
@@ -212,6 +213,11 @@ namespace SkillIssue
                 DashCooldown += 1;
             else
                 DashCooldown = 100;
+
+            // Health cap
+
+            if (Health > 100)
+                Health = 100;
 
             // Invulnerable time
 
@@ -282,9 +288,9 @@ namespace SkillIssue
                     {
                         var bg = (BladeGuy)a;
 
-                        Health -= 15;
+                        Health -= 10;
                         for (int i = 1; i <= bg.Level; i++)
-                            Health -= 5;
+                            Health -= 2;
 
                         SetState("Pain");
 

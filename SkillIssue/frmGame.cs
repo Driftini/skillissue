@@ -33,6 +33,10 @@ namespace SkillIssue
                 );
 
             _SkillIssue.Actors.Add(
+                new TutorialSplash()
+                );
+
+            _SkillIssue.Actors.Add(
                 new HUD()
                 );
 
@@ -142,39 +146,41 @@ namespace SkillIssue
             // enemy spawners
 
             var rnd = new Random();
+            var spawnMin = 9;
+            var spawnMax = 15;
 
             _SkillIssue.Actors.Add(
                 new EnemySpawner(
                     position: new Point(20, 32),
-                    tillnext: rnd.Next(3, 7)
+                    tillnext: rnd.Next(spawnMin, spawnMax)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new EnemySpawner(
                     position: new Point(278, 102),
-                    tillnext: rnd.Next(3, 7)
+                    tillnext: rnd.Next(spawnMin, spawnMax)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new EnemySpawner(
                     position: new Point(152, 62),
-                    tillnext: rnd.Next(3, 7)
+                    tillnext: rnd.Next(spawnMin, spawnMax)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new EnemySpawner(
                     position: new Point(264, 145),
-                    tillnext: rnd.Next(3, 7)
+                    tillnext: rnd.Next(spawnMin, spawnMax)
                     )
                 );
 
             _SkillIssue.Actors.Add(
                 new EnemySpawner(
                     position: new Point(48, 145),
-                    tillnext: rnd.Next(3, 7)
+                    tillnext: rnd.Next(spawnMin, spawnMax)
                     )
                 );
         }
